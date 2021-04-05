@@ -12,6 +12,9 @@ class MyDocument extends Document {
                     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
                     <style>{`
                           #__next { height: 100vh }
+                          body {
+                            overflow: hidden; /* Hide scrollbars */
+                          }
                      `}
                     </style>
                 </Head>
