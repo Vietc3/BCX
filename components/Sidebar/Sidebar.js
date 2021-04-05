@@ -20,8 +20,7 @@ export const Sidebar = () => {
   return (
     <>
       <Box
-        left={0}
-        p={5}
+        left={0}  
         w="100%"
         top={0}
         h="100%"

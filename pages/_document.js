@@ -11,14 +11,14 @@ class MyDocument extends Document {
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
                     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
                     <style>{`
-            #__next { height: 100vh }
-          `}
-          </style>
+                          #__next { height: 100vh }
+                     `}
+                    </style>
                 </Head>
                 <body>
                     <Main />
                     <NextScript />
-          
+
                 </body>
             </Html>
         )

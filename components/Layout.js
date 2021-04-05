@@ -6,8 +6,9 @@ function Layout({ children }) {
     return (
         
         <Grid
-            h="100%"
+            h="97%"
             w="100%"
+            pt={4}
             templateColumns="repeat(5, 1fr)"
             templateRows="repeat(8, 1fr)"
             gap={1}

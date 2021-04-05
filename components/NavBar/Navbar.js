@@ -31,7 +31,7 @@ export default function Navbar() {
         bg={bg}
         w="full"
         px={{ base: 2, sm: 4 }}
-        py={4}
+        py={1}
         shadow="md"
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
