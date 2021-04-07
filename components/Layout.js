@@ -3,6 +3,8 @@ import { Navbar } from './NavBar/Navbar';
 import { Sidebar } from './Sidebar/Sidebar';
 import { DrawerComponent } from './Sidebar/DrawerComponent';
 import { Divider, Grid, GridItem } from "@chakra-ui/react"
+
+
 function Layout({ children }) {
     return (
         <Grid
@@ -13,14 +15,14 @@ function Layout({ children }) {
             gap={4}
             bg="#f4f5f7"
         >
-            <GridItem colSpan={1} rowSpan={10} >
+            <GridItem colSpan={1} rowSpan={10} zIndex="9999" >
                 <Sidebar />
             </GridItem>
             <GridItem pt={3} colSpan={6} rowSpan={1}>
                 <Navbar />
             </GridItem>
             <GridItem colSpan={6} rowSpan={9} pl="10%" pr="10%" pb="2%">
-                {/* <DrawerComponent /> */}
+                <DrawerComponent />
                 {children}
             </GridItem>
         </Grid>
