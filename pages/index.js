@@ -1,6 +1,8 @@
-import { Box, Icon, useColorModeValue, Flex, Spacer, HStack, Select } from "@chakra-ui/react";
+import { Box, Icon, useColorModeValue, Flex, Spacer, HStack, Select, Center, Text } from "@chakra-ui/react";
 
 import { MdDesktopMac, MdTabletAndroid, MdPhoneIphone } from "react-icons/md";
+import Confetti from 'react-confetti'
+
 const Home = () => {
   const bg = useColorModeValue("white", "gray.800");
   const bgHeader = useColorModeValue("#f8f9fa", "gray.700");
@@ -23,11 +25,11 @@ const Home = () => {
           </Box>
           <Spacer />
           <Box w="35%" h="10" pt="2" pl="5">
-          <Select bg={bg}  size="sm"  borderRadius="lg" style={{textAlignLast:"center"}}>
-          <option value="index.html" >index.html</option>
+            <Select bg={bg} size="sm" borderRadius="lg" style={{ textAlignLast: "center" }}>
+              <option value="index.html" >index.html</option>
 
-          </Select>
-            </Box>
+            </Select>
+          </Box>
           <Spacer />
           <Box w='13%' p="4">
             <HStack spacing="15px" >
@@ -37,7 +39,12 @@ const Home = () => {
             </HStack>
           </Box>
         </Flex>
+           <Center fontSize="3xl" h="90%">
+            Start creating a new template by selecting UI components.
+          </Center>
       </Box>
+
+
     </>
   )
 }

@@ -15,6 +15,25 @@ class MyDocument extends Document {
                           body {
                             overflow: hidden; /* Hide scrollbars */
                           }
+                          /* width */
+                            ::-webkit-scrollbar {
+                            width: 10px;
+                            }
+
+                            /* Track */
+                            ::-webkit-scrollbar-track {
+                            background:  #f1f1f1; 
+                            }
+                            
+                            /* Handle */
+                            ::-webkit-scrollbar-thumb {
+                            background: #c1c1c1; 
+                            }
+
+                            /* Handle on hover */
+                            ::-webkit-scrollbar-thumb:hover {
+                            background: #c8c8c8; 
+                            }
                      `}
                     </style>
                 </Head>
