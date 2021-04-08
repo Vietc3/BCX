@@ -22,7 +22,10 @@ const Home = () => {
           </Box>
           <Spacer />
           <Box w="35%" h="10" pt="2" pl="5">
-          <Select bg={bg}  size="sm"  borderRadius="lg" placeholder="Woohoo! A new icon" align="center" />
+          <Select bg={bg}  size="sm"  borderRadius="lg" style={{textAlignLast:"center"}}>
+          <option value="index.html" >index.html</option>
+
+          </Select>
             </Box>
           <Spacer />
           <Box w='13%' p="4">

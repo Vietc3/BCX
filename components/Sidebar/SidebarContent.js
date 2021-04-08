@@ -1,17 +1,11 @@
-import React from "react";
+import React,{Fragment }  from "react";
 import { categories } from "./dataCategories";
 
 import {
-    Box,
     VStack,
     Text,
     Flex,
-    Spacer,
-    Tag,
-    Stack,
-    useColorModeValue,
     Center,
-    color
 } from "@chakra-ui/react";
 
 const hoverStyle = {
@@ -21,33 +15,30 @@ const hoverStyle = {
 }
 
 export const SidebarContent = (props) => {
-
-  
-
     return (<>
         <VStack
             align="stretch"
             pt={2}
             pl={5}     
+            key="contentSidebar"
         >
             {
-                categories.map((category, i) => (
-                    <>
-                        <Text key={category.name} pt={2} align="left" fontSize="xs" fontWeight="bold" color="gray.500">{category.name}
+                categories.map((category, index) => (
+                <Fragment key={category.name} >
+                       <Text pt={2} align="left" fontSize="xs" fontWeight="bold" color="gray.500">{category.name}
                         </Text>
                         {
                             category.components.map((component, i) => (
-                                <Flex key={i} _hover={hoverStyle} h="35px" pl={5} fontSize="sm" >
+                                <Flex _hover={hoverStyle} h="35px" pl={5} fontSize="sm" key={component.name}>
                                     <Center >
                                         <Text >
                                             {component.name}
                                         </Text>
                                     </Center>
                                 </Flex>
-
                             ))
                         }
-                    </>
+                </Fragment>
                 ))
             }
 

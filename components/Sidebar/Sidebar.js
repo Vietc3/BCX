@@ -1,21 +1,25 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import {
-  Button, 
+  Button,
   Grid, GridItem,
   useColorModeValue,
-  Text,
   Box,
-  useDisclosure
+  Image
 } from "@chakra-ui/react";
 import { BsFillHeartFill, BsBrush } from "react-icons/bs";
-
 import { SidebarContent } from "./SidebarContent";
 import useHover from '../Hooks/useHover';
 
-export const Sidebar = () => {
+export const Sidebar = (props) => {
   const bg = useColorModeValue("white", "gray.800");
   const [hoverRef, isHovered] = useHover();
+  const sendData = () => {
+    props.handleDrawer(isHovered);
+  }
+  useEffect(() => {
+    sendData()
+  }, [isHovered]);
+
   return (
     <>
       <Grid
@@ -28,16 +32,16 @@ export const Sidebar = () => {
           px={{ base: 2, sm: 4 }}
           py={1}
           shadow="md" >
-          <Box w="100%" h="8%" p={4}>
-            <Text align="center" fontSize="xl" fontWeight="bold">BCX Builder
-          </Text>
+          <Box w="100%" h="8%" p={2}>
+            <Image src="/logo/BCX-Studio.png" alt="BCX" />
           </Box>
         </GridItem>
         <GridItem rowSpan={9} bg={bg}
           px={{ base: 2, sm: 4 }}
           py={1}
           ref={hoverRef}
-          shadow="md" overflowY={isHovered ? "scroll" : "hidden"} >
+          shadow="md" overflowY={isHovered ? "scroll" : "hidden"}
+        >
           <SidebarContent />
         </GridItem>
         <GridItem rowSpan={2} bg={bg}>
