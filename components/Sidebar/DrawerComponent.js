@@ -9,8 +9,8 @@ import {
   useDisclosure, Button, Input, useColorModeValue
 } from "@chakra-ui/react"
 
-import React, {useEffect} from "react";
-import {useHover} from '../Hooks/useHoverVersion2';
+import React, { useEffect } from "react";
+import { useHover } from '../Hooks/useHoverVersion2';
 
 export const DrawerComponent = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -18,9 +18,9 @@ export const DrawerComponent = (props) => {
   const { openDrawer } = props;
 
   useEffect(() => {
-    hovered ? null :onClose();
+    hovered ? null : onClose();
   }, [hovered])
-  
+
   useEffect(() => {
     openDrawer ? onOpen() : null;
   }, [openDrawer])
@@ -33,7 +33,7 @@ export const DrawerComponent = (props) => {
         bg="#f4f5f7"
       >
         <DrawerOverlay>
-          <DrawerContent  onMouseOver={mouseOver} onMouseOut={mouseOut} key="drawer" bg="#ffffff" left="13.5% !important" >
+          <DrawerContent onMouseOver={mouseOver} onMouseOut={mouseOut} key="drawer" bg="#ffffff" left="13.5% !important" >
             <DrawerHeader>Components</DrawerHeader>
             <DrawerBody>
               <Input placeholder="Components" />
