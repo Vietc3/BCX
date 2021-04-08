@@ -27,6 +27,7 @@ export const Sidebar = (props) => {
         w="100%"
         templateRows="repeat(12, 1fr)"
         gap={0}
+       
       >
         <GridItem rowSpan={1} bg={bg}
           px={{ base: 2, sm: 4 }}

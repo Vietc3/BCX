@@ -3,10 +3,11 @@ import { Box, Icon, useColorModeValue, Flex, Spacer, HStack, Select } from "@cha
 import { MdDesktopMac, MdTabletAndroid, MdPhoneIphone } from "react-icons/md";
 const Home = () => {
   const bg = useColorModeValue("white", "gray.800");
+  const bgHeader = useColorModeValue("#f8f9fa", "gray.700");
   return (
     <>
       <Box bg={bg} w='100%' h="100%" borderWidth="1px" borderRadius="2%" ml={{ base: "0", md: "3" }}>
-        <Flex bg="#f8f9fa">
+        <Flex bg={bgHeader}>
           <Box w='10%' p="6" >
             <HStack spacing="15px">
               <Box w="7px" h="7px" borderRadius="50%" bg="red">

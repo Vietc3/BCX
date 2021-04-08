@@ -19,7 +19,7 @@ function Layout({ children }) {
             gap={4}
             bg="#f4f5f7"
         >
-            <GridItem colSpan={1} rowSpan={10} zIndex="9999" >
+            <GridItem colSpan={1} rowSpan={10} zIndex="99999" >
                 <Sidebar handleDrawer={handleDrawer} />
             </GridItem>
 
