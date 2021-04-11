@@ -8,6 +8,7 @@ import { FeatureComponent } from "./User/feature";
 import { Navigation } from "./User/navigation";
 import { ContainerComponent } from "./User/container";
 
+
 function Layout({ children }) {
     const [openDrawer, setOpenDrawer] = useState(false);
     const handleDrawer = (isOpen) => {

@@ -39,7 +39,7 @@ import { useHover } from '../Hooks/useHoverVersion2.ts';
     }
     return (
       <Box {...hoverProps} _hover={hoverStyle} ref={ref => connect(drag(ref))}>
-          <EditButtonGroup isHovered = {isHovered}/>
+          {/* <EditButtonGroup isHovered = {isHovered}/> */}
         <Flex
           bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}

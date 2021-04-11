@@ -15,6 +15,8 @@ import {
 import { FaCheckCircle } from 'react-icons/fa';
 import { EditButtonGroup } from "../Button/editButtonGroup";
 import { useHover } from '../Hooks/useHoverVersion2.ts';
+import { Text1 } from './text';
+import { useNode } from "@craftjs/core";
 
 
 function PriceWrapper({ children }) {
@@ -39,9 +41,11 @@ export const Pricing = () => {
         border: "2px solid blue"
       }
       const { hoverProps, isHovered } = useHover({});
+      const { connectors: {connect, drag} } = useNode();
   return (
-    <Box {...hoverProps}  _hover={hoverStyle} py={12}>
-          <EditButtonGroup isHovered = {isHovered}/>
+    <Box {...hoverProps}  _hover={hoverStyle} py={12}  ref={ref => connect(drag(ref))}>
+      
+          {/* <EditButtonGroup isHovered = {isHovered}/> */}
       <VStack spacing={2} textAlign="center">
         <Heading as="h1" fontSize="4xl">
           Plans that fit your need
@@ -51,6 +55,7 @@ export const Pricing = () => {
           anytime.
         </Text>
       </VStack>
+      
       <Stack
         direction={{ base: 'column', md: 'row' }}
         textAlign="center"
