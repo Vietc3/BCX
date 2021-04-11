@@ -22,10 +22,15 @@ import {
     ChevronRightIcon,
   } from '@chakra-ui/icons';
   import { useNode } from "@craftjs/core";
+  import { EditButtonGroup } from "../Button/editButtonGroup";
+import { useHover } from '../Hooks/useHoverVersion2.ts';
+
+ 
   
   export const Navigation = () => {
     const { isOpen, onToggle } = useDisclosure();
     const { connectors: {connect, drag} } = useNode();
+    const { hoverProps, isHovered } = useHover({});
     const hoverStyle = {
       background: "#f4f5f7",
       cursor: 'pointer',
@@ -33,7 +38,8 @@ import {
       border: "2px solid blue"
     }
     return (
-      <Box  _hover={hoverStyle} ref={ref => connect(drag(ref))}>
+      <Box {...hoverProps} _hover={hoverStyle} ref={ref => connect(drag(ref))}>
+          <EditButtonGroup isHovered = {isHovered}/>
         <Flex
           bg={useColorModeValue('white', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
@@ -43,7 +49,7 @@ import {
           borderBottom={1}
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.900')}
-          align={'center'}>
+          align={'center'}>             
           <Flex
             flex={{ base: 1, md: 'auto' }}
             ml={{ base: -2 }}
@@ -55,7 +61,7 @@ import {
               }
               variant={'ghost'}
               aria-label={'Toggle Navigation'}
-            />
+            />            
           </Flex>
           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
             <Text

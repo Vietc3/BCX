@@ -16,11 +16,7 @@ import React, { useEffect } from "react";
 import { useHover } from '../Hooks/useHoverVersion2.ts';
 import { useRecoilValue } from 'recoil';
 import { drawerState } from '../../store/sidebar/drawerState';
-import { Element, useEditor } from "@craftjs/core";
-
-import { FeatureComponent } from "../User/feature";
-import { Navigation } from "../User/navigation";
-import { ContainerComponent } from "../User/container";
+import {useEditor } from "@craftjs/core";
 
 
 

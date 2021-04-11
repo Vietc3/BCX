@@ -13,6 +13,9 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { FaCheckCircle } from 'react-icons/fa';
+import { EditButtonGroup } from "../Button/editButtonGroup";
+import { useHover } from '../Hooks/useHoverVersion2.ts';
+
 
 function PriceWrapper({ children }) {
   return (
@@ -35,8 +38,10 @@ export const Pricing = () => {
         borderRadius: "10",
         border: "2px solid blue"
       }
+      const { hoverProps, isHovered } = useHover({});
   return (
-    <Box  _hover={hoverStyle} py={12}>
+    <Box {...hoverProps}  _hover={hoverStyle} py={12}>
+          <EditButtonGroup isHovered = {isHovered}/>
       <VStack spacing={2} textAlign="center">
         <Heading as="h1" fontSize="4xl">
           Plans that fit your need
