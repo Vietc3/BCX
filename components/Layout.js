@@ -1,13 +1,16 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { Navbar } from './NavBar/Navbar';
 import { Sidebar } from './Sidebar/Sidebar';
 import { DrawerComponent } from './Sidebar/DrawerComponent';
-import { Divider, Grid, GridItem } from "@chakra-ui/react"
+import { Grid, GridItem } from "@chakra-ui/react";
+import { Editor, Frame, Element } from "@craftjs/core";
+import { FeatureComponent } from "./User/feature";
+import { Navigation } from "./User/navigation";
+import { ContainerComponent } from "./User/container";
 
 function Layout({ children }) {
     const [openDrawer, setOpenDrawer] = useState(false);
-    const handleDrawer = (isOpen)=>
-    {
+    const handleDrawer = (isOpen) => {
         setOpenDrawer(isOpen)
     }
     return (
@@ -28,10 +31,14 @@ function Layout({ children }) {
             </GridItem>
 
             <GridItem colSpan={6} rowSpan={9} pl="10%" pr="10%" pb="2%">
-                <DrawerComponent openDrawer={openDrawer}/>
-                {children}
+                <Editor resolver={{FeatureComponent,ContainerComponent,Navigation }}>
+                    <DrawerComponent openDrawer={openDrawer} />
+                    <Frame>
+                    {children}
+                    </Frame>
+                </Editor>
             </GridItem>
-            
+
         </Grid>
     )
 }

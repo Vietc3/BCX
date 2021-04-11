@@ -7,6 +7,8 @@ import {
     Flex,
     Center,
 } from "@chakra-ui/react";
+import { useRecoilState  } from 'recoil';
+import { drawerState } from '../../store/sidebar/drawerState';
 
 const hoverStyle = {
     background: "#f4f5f7",
@@ -15,6 +17,13 @@ const hoverStyle = {
 }
 
 export const SidebarContent = (props) => {
+
+    const [drawer, setDrawer] = useRecoilState(drawerState);
+    
+    const handleMouseOver = (component) => {
+        setDrawer({ ...drawer, content: component.name, components: component.components })
+    }
+
     return (<>
         <VStack
             align="stretch"
@@ -29,7 +38,7 @@ export const SidebarContent = (props) => {
                         </Text>
                         {
                             category.components.map((component, i) => (
-                                <Flex _hover={hoverStyle} h="35px" pl={5} fontSize="sm" key={component.name}>
+                                <Flex _hover={hoverStyle} onMouseOver={()=>handleMouseOver(component)} h="35px" pl={5} fontSize="sm" key={component.name}>
                                     <Center >
                                         <Text >
                                             {component.name}

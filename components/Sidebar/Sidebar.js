@@ -13,6 +13,7 @@ import useHover from '../Hooks/useHover';
 
 export const Sidebar = (props) => {
   const bg = useColorModeValue("white", "gray.800");
+
   const [hoverRef, isHovered] = useHover();
   const sendData = () => {
     props.handleDrawer(isHovered);
@@ -44,7 +45,7 @@ export const Sidebar = (props) => {
           ref={hoverRef}
           shadow="md" overflowY={isHovered ? "scroll" : "hidden"}
         >
-          <SidebarContent />
+          <SidebarContent isHovered={isHovered}/>
         </GridItem>
         <GridItem rowSpan={2} bg={bg}>
           <Box px={3} pt={5}>

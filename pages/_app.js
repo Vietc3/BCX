@@ -2,7 +2,9 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 import Layout from '../components/Layout';
-
+import {
+  RecoilRoot,
+} from 'recoil';
 const colors = {
   brand: {
     50: "#ecefff",
@@ -26,9 +28,12 @@ const theme = extendTheme({ colors, config });
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={theme}>
-      <Layout><Component {...pageProps} /></Layout>
-    </ChakraProvider>
+    <RecoilRoot>
+      <ChakraProvider theme={theme}>
+        <Layout><Component {...pageProps} /></Layout>
+      </ChakraProvider>
+    </RecoilRoot>
+
   );
 }
 export default MyApp;

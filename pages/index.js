@@ -1,7 +1,11 @@
 import { Box, Icon, useColorModeValue, Flex, Spacer, HStack, Select, Center, Text } from "@chakra-ui/react";
 
 import { MdDesktopMac, MdTabletAndroid, MdPhoneIphone } from "react-icons/md";
-import Confetti from 'react-confetti'
+import { Navigation } from "../components/User/navigation";
+import { FeatureComponent } from "../components/User/feature";
+import { ContainerComponent } from "../components/User/container";
+import { Element } from "@craftjs/core";
+
 
 const Home = () => {
   const bg = useColorModeValue("white", "gray.800");
@@ -13,13 +17,10 @@ const Home = () => {
           <Box w='10%' p="6" >
             <HStack spacing="15px">
               <Box w="7px" h="7px" borderRadius="50%" bg="red">
-
               </Box>
               <Box w="7px" h="7px" borderRadius="50%" bg="yellow.400">
-
               </Box>
               <Box w="7px" h="7px" borderRadius="50%" bg="green">
-
               </Box>
             </HStack>
           </Box>
@@ -39,12 +40,12 @@ const Home = () => {
             </HStack>
           </Box>
         </Flex>
-           <Center fontSize="3xl" h="90%">
-            Start creating a new template by selecting UI components.
-          </Center>
+        
+        <Element  id="drop" is={ContainerComponent} canvas>
+   
+        </Element>
+
       </Box>
-
-
     </>
   )
 }

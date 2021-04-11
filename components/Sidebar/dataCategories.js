@@ -1,3 +1,7 @@
+import { Navigation } from "../User/navigation";
+import { FeatureComponent } from "../User/feature";
+import { Pricing } from "../User/pricing";
+
 export const categories = [
     {
         name: 'LAYOUT',
@@ -8,10 +12,26 @@ export const categories = [
     {
         name: 'BASE',
         components: [
-            { name: 'Navigations' },
-            { name: 'Headers' },
-            { name: 'Feature' },
-            { name: 'Pricing' },
+            {
+                name: 'Navigations',
+                components: [
+                    { name: 'navigation1', imgSrc: 'navigation1.png',  jsx: <Navigation />},
+                    
+                ]
+            },
+            {
+                name: 'Headers',
+            },
+            {
+                name: 'Feature',
+                components: [
+                    { name: 'feature1', imgSrc: 'feature1.PNG', jsx: <FeatureComponent /> }
+                ]
+            },
+            { name: 'Pricing',
+            components: [
+                { name: 'pricing1', imgSrc: 'pricing1.PNG', jsx: <Pricing /> }
+            ] },
             { name: 'Sign in/ Sign up' },
             { name: 'Team' },
             { name: 'Blog posts' },
@@ -21,10 +41,10 @@ export const categories = [
             { name: 'How it works' },
             { name: 'Newsletter' },
             { name: 'FAQs' },
-            { name: 'Contact'},
-            { name: 'Stats'},
-            { name: 'Cookies'},
-            { name: 'Footer'},
+            { name: 'Contact' },
+            { name: 'Stats' },
+            { name: 'Cookies' },
+            { name: 'Footer' },
         ]
     }
 
