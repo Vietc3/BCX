@@ -9,7 +9,6 @@ import {
   StackDivider,
   Icon,
   useColorModeValue,
-  Button
 } from '@chakra-ui/react';
 import {
   IoAnalyticsSharp,
@@ -17,10 +16,6 @@ import {
   IoSearchSharp,
 } from 'react-icons/io5';
 import { useNode } from "@craftjs/core";
-import { EditButtonGroup } from "../Button/editButtonGroup";
-import { useHover } from '../Hooks/useHoverVersion2.ts';
-
-// import { Text } from './text';
 import ContentEditable from 'react-contenteditable'
 import React, { useEffect, useState } from "react";
 
@@ -49,8 +44,6 @@ const Feature = ({ text, icon, iconBg }) => {
 };
 
 export const FeatureComponent = ({ headerContent, title, tagName }) => {
-
-  const { hoverProps, isHovered } = useHover({});
   const { connectors: { connect, drag }, selected, dragged, actions: { setProp } } = useNode((state) => ({
     selected: state.events.selected,
     dragged: state.events.dragged
@@ -59,7 +52,7 @@ export const FeatureComponent = ({ headerContent, title, tagName }) => {
   useEffect(() => { !selected && setEditable(false) }, [selected]);
   return (
     <>
-      <Box {...hoverProps} _hover={hoverStyle} w="100%" py={7} ref={ref => connect(drag(ref))}>
+      <Box _hover={hoverStyle} w="100%" py={7} ref={ref => connect(drag(ref))}>
         {/* <EditButtonGroup isHovered={isHovered} /> */}
         <SimpleGrid pl={10} columns={{ base: 1, md: 2 }} spacing={10}>
 

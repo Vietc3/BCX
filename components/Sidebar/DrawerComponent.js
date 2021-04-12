@@ -1,15 +1,12 @@
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
   Text,
   Box,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   Image,
-  useDisclosure, Button, Input, useColorModeValue
+  useDisclosure,
 } from "@chakra-ui/react"
 
 import React, { useEffect } from "react";
@@ -17,8 +14,6 @@ import { useHover } from '../Hooks/useHoverVersion2.ts';
 import { useRecoilValue } from 'recoil';
 import { drawerState } from '../../store/sidebar/drawerState';
 import {useEditor } from "@craftjs/core";
-
-
 
 export const DrawerComponent = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()

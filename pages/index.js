@@ -1,8 +1,6 @@
 import { Box, Icon, useColorModeValue, Flex, Spacer, HStack, Select, Center, Text } from "@chakra-ui/react";
 
 import { MdDesktopMac, MdTabletAndroid, MdPhoneIphone } from "react-icons/md";
-import { Navigation } from "../components/User/navigation";
-import { FeatureComponent } from "../components/User/feature";
 import { ContainerComponent } from "../components/User/container";
 import { Element } from "@craftjs/core";
 

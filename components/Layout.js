@@ -4,8 +4,13 @@ import { Sidebar } from './Sidebar/Sidebar';
 import { DrawerComponent } from './Sidebar/DrawerComponent';
 import { Grid, GridItem } from "@chakra-ui/react";
 import { Editor, Frame, Element } from "@craftjs/core";
-import { FeatureComponent } from "./User/feature";
-import { Navigation } from "./User/navigation";
+import { FeatureComponent } from "./User/Feature/feature";
+import { FeatureComponent2 } from "./User/Feature/feature2";
+import { FeatureComponent3 } from "./User/Feature/feature3";
+import { Navigation } from "./User/navigation/navigation";
+import { Navigation2 } from "./User/navigation/navigation2";
+import { Footer } from "./User/Footer/footer";
+import { Footer2 } from "./User/Footer/footer2";
 import { ContainerComponent } from "./User/container";
 
 
@@ -32,7 +37,8 @@ function Layout({ children }) {
             </GridItem>
 
             <GridItem colSpan={6} rowSpan={9} pl="10%" pr="10%" pb="2%">
-                <Editor resolver={{FeatureComponent,ContainerComponent,Navigation }}>
+                <Editor resolver={{FeatureComponent,FeatureComponent2,FeatureComponent3,ContainerComponent
+                    ,Footer, Footer2,Navigation,Navigation2}}>
                     <DrawerComponent openDrawer={openDrawer} />
                     <Frame>
                     {children}
