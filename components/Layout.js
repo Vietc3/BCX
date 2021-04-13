@@ -14,8 +14,10 @@ import { Footer2 } from "./User/Footer/footer2";
 import { ContainerComponent } from "./User/container";
 
 
+
 function Layout({ children }) {
     const [openDrawer, setOpenDrawer] = useState(false);
+    const [enabled] = useState(true);
     const handleDrawer = (isOpen) => {
         setOpenDrawer(isOpen)
     }
@@ -37,15 +39,17 @@ function Layout({ children }) {
             </GridItem>
 
             <GridItem colSpan={6} rowSpan={9} pl="10%" pr="10%" pb="2%">
-                <Editor resolver={{FeatureComponent,FeatureComponent2,FeatureComponent3,ContainerComponent
-                    ,Footer, Footer2,Navigation,Navigation2}}>
+                <Editor 
+                resolver={{FeatureComponent,FeatureComponent2,FeatureComponent3,ContainerComponent
+                    ,Footer, Footer2,Navigation,Navigation2}}
+                    enabled={enabled}                 
+                    >
                     <DrawerComponent openDrawer={openDrawer} />
                     <Frame>
                     {children}
                     </Frame>
                 </Editor>
             </GridItem>
-
         </Grid>
     )
 }

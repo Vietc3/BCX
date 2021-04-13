@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import {
   RecoilRoot,
 } from 'recoil';
+import '../styles/app.css';
 const colors = {
   brand: {
     50: "#ecefff",

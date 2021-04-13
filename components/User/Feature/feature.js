@@ -18,6 +18,9 @@ import {
 import { useNode } from "@craftjs/core";
 import ContentEditable from 'react-contenteditable'
 import React, { useEffect, useState } from "react";
+import { EditButtonGroup } from "../../Button/editButtonGroup";
+import { TextEditor } from "../../Editor/text";
+
 
 const hoverStyle = {
   background: "#f4f5f7",
@@ -50,50 +53,26 @@ export const FeatureComponent = ({ headerContent, title, tagName }) => {
   }));
   const [editable, setEditable] = useState(false);
   useEffect(() => { !selected && setEditable(false) }, [selected]);
+
   return (
     <>
       <Box _hover={hoverStyle} w="100%" py={7} ref={ref => connect(drag(ref))}>
-        {/* <EditButtonGroup isHovered={isHovered} /> */}
         <SimpleGrid pl={10} columns={{ base: 1, md: 2 }} spacing={10}>
-
           <Stack spacing={4}>
-            <Text
-              textTransform={'uppercase'}
+            <TextEditor  textTransform={'uppercase'}
               color={'blue.400'}
               fontWeight={600}
               fontSize={'sm'}
               bg={useColorModeValue('blue.50', 'blue.900')}
-              p={2}
+             
               alignSelf={'flex-start'}
               rounded={'md'}>
-
-              <ContentEditable
-                onClick={e => setEditable(true)}
-                html={tagName ? tagName : 'Our Story'}
-                disabled={!editable}
-                onChange={e =>
-                  setProp(props =>
-                    props.tagName = e.target.value.replace(/<\/?[^>]+(>|$)/g, "")
-                  )
-                }
-                tagName="p"
-              />
-            </Text>
-
-
+              Our Story
+            </TextEditor>
             <Heading>
-              <ContentEditable
-                onClick={e => setEditable(true)}
-                html={headerContent ? headerContent : ' A digital Product design agency'}
-                disabled={!editable}
-                onChange={e =>
-                  setProp(props =>
-                    props.headerContent = e.target.value.replace(/<\/?[^>]+(>|$)/g, "")
-                  )
-                }
-                tagName="p"
-              />
-
+              <TextEditor>
+                Hello
+            </TextEditor>
             </Heading>
             <Text color={'gray.500'} fontSize={'lg'}>
               <ContentEditable

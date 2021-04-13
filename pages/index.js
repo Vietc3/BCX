@@ -37,12 +37,9 @@ const Home = () => {
               <Icon as={MdPhoneIphone} w={5} h={5} />
             </HStack>
           </Box>
-        </Flex>
-        
-        <Element  id="drop" is={ContainerComponent} canvas>
-   
+        </Flex>        
+        <Element  id="drop" is={ContainerComponent} canvas>   
         </Element>
-
       </Box>
     </>
   )
