@@ -14,7 +14,7 @@ export const TextEditor = (props) => {
     background: "#f4f5f7",
     cursor: 'pointer',
     borderRadius: "10",
-    border: "2px solid blue"
+    border: "2px dashed blue"
   }
 
   const { textTransform, color, fontWeight, fontSize, bg, p, alignSelf, rounded, setContent, setTitle } = props

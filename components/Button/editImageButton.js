@@ -7,11 +7,16 @@ import { TextEditModal } from "../Modal/textEdit"
 import { useRecoilState  } from 'recoil';
 import { ModalState } from '../../store/Modal/modalState';
 
-export const EditButtonGroup = (props) => {
-    const { isHovered, content, setContent, setTitle } = props;
+export const EditImageButton = (props) => {
+    const { isHovered} = props;
     return (
         <HStack display={isHovered ? "flex" : "none"}>
-            <TextEditModal content ={content} setTitle={setTitle} setContent={setContent}/>
+             <Button as="label" colorScheme="red" size="xs" width="15%" mb={0}>
+             <input type="file" style={{visibility: "hidden",}}/>
+                Change Image
+             </Button>
+            
+          
             <Button colorScheme="red" size="xs">
                 Delete
              </Button>

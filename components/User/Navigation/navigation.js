@@ -34,7 +34,7 @@ export const Navigation = () => {
     background: "#f4f5f7",
     cursor: 'pointer',
     borderRadius: "10",
-    border: "2px solid blue"
+    border: "2px dashed blue"
   }
   return (
     <Box {...hoverProps} _hover={hoverStyle} ref={ref => connect(drag(ref))}>

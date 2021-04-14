@@ -44,7 +44,7 @@ export const Navigation2 = () => {
         background: "#f4f5f7",
         cursor: 'pointer',
         borderRadius: "10",
-        border: "2px solid blue"
+        border: "2px dashed blue"
     }
 
     return (

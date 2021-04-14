@@ -16,20 +16,16 @@ import {
   IoSearchSharp,
 } from 'react-icons/io5';
 import { useNode } from "@craftjs/core";
-import ContentEditable from 'react-contenteditable'
 import React, { useEffect, useState } from "react";
 import { EditButtonGroup } from "../../Button/editButtonGroup";
 import { TextEditor } from "../../Editor/text";
-
-import { useRecoilState } from 'recoil';
-import { ModalState } from '../../../store/Modal/modalState';
-
+import { ImageEditor } from "../../Editor/image";
 
 const hoverStyle = {
   background: "#f4f5f7",
   cursor: 'pointer',
   borderRadius: "10",
-  border: "2px solid blue"
+  border: "2px dashed blue"
 }
 
 const Feature = ({ text, icon, iconBg }) => {
@@ -130,7 +126,7 @@ export const FeatureComponent = ({ headerContent, tagName }) => {
             </Stack>
           </Stack>
           <Flex>
-            <Image
+            <ImageEditor
               rounded={'md'}
               alt={'feature image'}
               src={

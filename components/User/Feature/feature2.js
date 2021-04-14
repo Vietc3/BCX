@@ -29,8 +29,14 @@ export const  FeatureComponent2 = () => {
         selected: state.events.selected,
         dragged: state.events.dragged
       }));
+      const hoverStyle = {
+        background: "#f4f5f7",
+        cursor: 'pointer',
+        borderRadius: "10",
+        border: "2px dashed blue"
+      }
   return (
-    <Box p={4} ref={ref => connect(drag(ref))}>
+    <Box _hover={hoverStyle} p={4} ref={ref => connect(drag(ref))}>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         <Feature
           icon={<Icon as={FcAssistant} w={10} h={10} />}
