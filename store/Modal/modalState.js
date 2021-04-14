@@ -4,4 +4,5 @@ export const ModalState = atom({
   key: 'ModalState',
   default: {
       textEditModal:false,
+      content:''
   }});

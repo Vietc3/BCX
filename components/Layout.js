@@ -18,9 +18,7 @@ import { ContainerComponent } from "./User/container";
 function Layout({ children }) {
     const [openDrawer, setOpenDrawer] = useState(false);
     const [enabled] = useState(true);
-    const handleDrawer = (isOpen) => {
-        setOpenDrawer(isOpen)
-    }
+    const handleDrawer = (isOpen) => { setOpenDrawer(isOpen) }
     return (
         <Grid
             h="100%"

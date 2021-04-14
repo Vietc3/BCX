@@ -8,11 +8,10 @@ import { useRecoilState  } from 'recoil';
 import { ModalState } from '../../store/Modal/modalState';
 
 export const EditButtonGroup = (props) => {
-    const { isHovered } = props;
+    const { isHovered, content, setContent, setTitle } = props;
     return (
         <HStack display={isHovered ? "flex" : "none"}>
-            <TextEditModal/>
-      
+            <TextEditModal content = {content} setTitle={setTitle} setContent={setContent}/>
             <Button colorScheme="red" size="xs">
                 Delete
              </Button>

@@ -47,7 +47,6 @@ export const categories = [
                 components: [
                     { name: 'footer', imgSrc: 'footer.PNG', jsx: <Footer /> },
                     { name: 'footer2', imgSrc: 'footer2.PNG', jsx: <Footer2 /> },
-
                 ]
             },
             { name: 'Sign in/ Sign up' },

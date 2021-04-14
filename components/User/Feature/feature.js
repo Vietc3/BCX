@@ -21,6 +21,9 @@ import React, { useEffect, useState } from "react";
 import { EditButtonGroup } from "../../Button/editButtonGroup";
 import { TextEditor } from "../../Editor/text";
 
+import { useRecoilState } from 'recoil';
+import { ModalState } from '../../../store/Modal/modalState';
+
 
 const hoverStyle = {
   background: "#f4f5f7",
@@ -46,36 +49,47 @@ const Feature = ({ text, icon, iconBg }) => {
   );
 };
 
-export const FeatureComponent = ({ headerContent, title, tagName }) => {
+export const FeatureComponent = ({ headerContent, tagName }) => {
   const { connectors: { connect, drag }, selected, dragged, actions: { setProp } } = useNode((state) => ({
     selected: state.events.selected,
     dragged: state.events.dragged
   }));
   const [editable, setEditable] = useState(false);
   useEffect(() => { !selected && setEditable(false) }, [selected]);
+  
+  const [content, setContent] = useState("Our Story");
+  const [title, setTitle] = useState("Hello");
+  
 
   return (
     <>
       <Box _hover={hoverStyle} w="100%" py={7} ref={ref => connect(drag(ref))}>
         <SimpleGrid pl={10} columns={{ base: 1, md: 2 }} spacing={10}>
           <Stack spacing={4}>
+
             <TextEditor  textTransform={'uppercase'}
               color={'blue.400'}
               fontWeight={600}
               fontSize={'sm'}
               bg={useColorModeValue('blue.50', 'blue.900')}
-             
               alignSelf={'flex-start'}
-              rounded={'md'}>
-              Our Story
+              rounded={'md'}
+              setContent = {(content)=>setContent(content)}
+              >
+              {content}
             </TextEditor>
+
             <Heading>
-              <TextEditor>
-                Hello
-            </TextEditor>
+              <TextEditor
+               setTitle = {(content)=>setTitle(content)} 
+               
+              >
+              {title}
+              </TextEditor>
             </Heading>
+
             <Text color={'gray.500'} fontSize={'lg'}>
-              <ContentEditable
+              {/* <ContentEditable
                 onClick={e => setEditable(true)}
                 html={title ? title : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore'}
                 disabled={!editable}
@@ -85,7 +99,7 @@ export const FeatureComponent = ({ headerContent, title, tagName }) => {
                   )
                 }
                 tagName="p"
-              />
+              /> */}
             </Text>
             <Stack
               spacing={4}

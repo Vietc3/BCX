@@ -17,12 +17,10 @@ const hoverStyle = {
 }
 
 export const SidebarContent = (props) => {
-
     const [drawer, setDrawer] = useRecoilState(drawerState);
     const handleMouseOver = (component) => {
         setDrawer({ ...drawer, content: component.name, components: component.components })
     }
-
     return (<>
         <VStack
             align="stretch"
