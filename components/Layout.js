@@ -3,7 +3,7 @@ import { Navbar } from './NavBar/Navbar';
 import { Sidebar } from './Sidebar/Sidebar';
 import { DrawerComponent } from './Sidebar/DrawerComponent';
 import { Grid, GridItem } from "@chakra-ui/react";
-import { Editor, Frame, Element } from "@craftjs/core";
+import { Editor, Frame } from "@craftjs/core";
 import { FeatureComponent } from "./User/Feature/feature";
 import { FeatureComponent2 } from "./User/Feature/feature2";
 import { FeatureComponent3 } from "./User/Feature/feature3";
@@ -12,8 +12,6 @@ import { Navigation2 } from "./User/navigation/navigation2";
 import { Footer } from "./User/Footer/footer";
 import { Footer2 } from "./User/Footer/footer2";
 import { ContainerComponent } from "./User/container";
-
-
 
 function Layout({ children }) {
     const [openDrawer, setOpenDrawer] = useState(false);

@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useHover } from '../Hooks/useHoverVersion2.ts';
 import { EditTextButton } from '../Button/editTextButton';
 import {  Text } from "@chakra-ui/react"

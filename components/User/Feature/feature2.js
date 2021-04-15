@@ -1,9 +1,7 @@
-
 import { Box, SimpleGrid, Icon, Text, Stack, Flex } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
 import { useNode } from "@craftjs/core";
 import { hoverStyle } from "../Style/styleDefault";
-
 
 const Feature = ({ title, text, icon }) => {
   return (

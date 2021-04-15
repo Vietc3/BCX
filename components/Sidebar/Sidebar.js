@@ -10,17 +10,14 @@ import { BsFillHeartFill, BsBrush } from "react-icons/bs";
 import { SidebarContent } from "./SidebarContent";
 import useHover from '../Hooks/useHover';
 
-
 export const Sidebar = (props) => {
-  const bg = useColorModeValue("white", "gray.800");
 
+  const bg = useColorModeValue("white", "gray.800");
   const [hoverRef, isHovered] = useHover();
   const sendData = () => {
     props.handleDrawer(isHovered);
   }
-  useEffect(() => {
-    sendData()
-  }, [isHovered]);
+  useEffect(() => {sendData()}, [isHovered]);
 
   return (
     <>

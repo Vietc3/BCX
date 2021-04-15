@@ -1,6 +1,5 @@
 import React,{Fragment }  from "react";
 import { categories } from "./dataCategories";
-
 import {
     VStack,
     Text,
