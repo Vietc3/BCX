@@ -15,11 +15,9 @@ export const TextEditModal = (props) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [contentEdit, setContentEdit] = useState(props.content);
-
   const handleOnChange = (e) => {
     setContentEdit(e.target.value)
   }
-
   const handleSubmit = () => {
     props.setContent(contentEdit);
     onClose();

@@ -12,7 +12,7 @@ import {
     Button,
 } from '@chakra-ui/react';
 import { FaCheckCircle } from 'react-icons/fa';
-import { useHover } from '../Hooks/useHoverVersion2.ts';
+import { useHover } from '../../Hooks/useHoverVersion2.ts';
 import { useNode } from "@craftjs/core";
 
 function PriceWrapper({ children }) {

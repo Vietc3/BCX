@@ -5,7 +5,7 @@ import { FeatureComponent2 } from "../User/Feature/feature2";
 import { FeatureComponent3 } from "../User/Feature/feature3";
 import { Footer } from "../User/Footer/footer";
 import { Footer2 } from "../User/Footer/footer2";
-import { Pricing } from "../User/pricing";
+import { Pricing } from "../User/Pricing/pricing";
 
 export const categories = [
     {

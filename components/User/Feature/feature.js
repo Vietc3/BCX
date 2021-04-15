@@ -38,13 +38,8 @@ const Feature = ({ text, icon, iconBg }) => {
 };
 
 export const FeatureComponent = () => {
-  const { connectors: { connect, drag }, selected, dragged, actions: { setProp } } = useNode((state) => ({
-    selected: state.events.selected,
-    dragged: state.events.dragged
-  }));
-  const [editable, setEditable] = useState(false);
-  useEffect(() => { !selected && setEditable(false) }, [selected]);
-
+  const { connectors: { connect, drag }} = useNode();
+ 
   let contentDefault = {
     tag:"Our Story",
     title:"Hello",
@@ -54,7 +49,6 @@ export const FeatureComponent = () => {
   const [content, setContent] = useState(contentDefault);
   const [imageUrl, setImageUrl] = useState('https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
   
-
   return (
     <>
       <Box _hover={hoverStyle} w="100%" py={7} ref={ref => connect(drag(ref))}>
@@ -73,7 +67,7 @@ export const FeatureComponent = () => {
               {content.tag}
             </TextEditor>
 
-            <Heading>
+            <Heading  as="div" >
               <TextEditor
               setContent = {(content)=>setContent({...contentDefault,title:content})}
               >

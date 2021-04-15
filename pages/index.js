@@ -1,7 +1,7 @@
 import { Box, Icon, useColorModeValue, Flex, Spacer, HStack, Select, Center, Text } from "@chakra-ui/react";
 
 import { MdDesktopMac, MdTabletAndroid, MdPhoneIphone } from "react-icons/md";
-import { ContainerComponent } from "../components/User/container";
+import { ContainerComponent } from "../components/User/Container/container";
 import { Element } from "@craftjs/core";
 
 
@@ -26,7 +26,6 @@ const Home = () => {
           <Box w="35%" h="10" pt="2" pl="5">
             <Select bg={bg} size="sm" borderRadius="lg" style={{ textAlignLast: "center" }}>
               <option value="index.html" >index.html</option>
-
             </Select>
           </Box>
           <Spacer />

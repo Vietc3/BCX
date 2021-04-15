@@ -12,6 +12,7 @@ export const TextEditor = (props) => {
 
   return (
     <Text
+    as="div"
       textTransform={textTransform}
       color={color}
       fontWeight={fontWeight}

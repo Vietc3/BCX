@@ -24,8 +24,6 @@ import {
 import { useNode } from "@craftjs/core";
 import { useHover } from '../../Hooks/useHoverVersion2.ts';
 
-
-
 export const Navigation = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { connectors: { connect, drag } } = useNode();

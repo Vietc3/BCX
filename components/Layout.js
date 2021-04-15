@@ -7,11 +7,11 @@ import { Editor, Frame } from "@craftjs/core";
 import { FeatureComponent } from "./User/Feature/feature";
 import { FeatureComponent2 } from "./User/Feature/feature2";
 import { FeatureComponent3 } from "./User/Feature/feature3";
-import { Navigation } from "./User/navigation/navigation";
-import { Navigation2 } from "./User/navigation/navigation2";
+import { Navigation } from "./User/Navigation/navigation";
+import { Navigation2 } from "./User/Navigation/navigation2";
 import { Footer } from "./User/Footer/footer";
 import { Footer2 } from "./User/Footer/footer2";
-import { ContainerComponent } from "./User/container";
+import { ContainerComponent } from "./User/Container/container";
 
 function Layout({ children }) {
     const [openDrawer, setOpenDrawer] = useState(false);
