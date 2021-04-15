@@ -7,28 +7,22 @@ import {
   ModalFooter,
   ModalBody,
   Button,
-  ModalCloseButton, Lorem,
+  ModalCloseButton,
   useDisclosure,
   Input
 } from "@chakra-ui/react"
 import React, { useState } from "react";
-
-import { useRecoilState } from 'recoil';
-import { ModalState } from '../../store/Modal/modalState';
-
 export const TextEditModal = (props) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [modal, setModal] = useRecoilState(ModalState);
-  const [content, setContentA] = useState(props.content);
+  const [contentEdit, setContentEdit] = useState(props.content);
 
-  const handleOnChange = (e) =>{
-    setContentA(e.target.value)
+  const handleOnChange = (e) => {
+    setContentEdit(e.target.value)
   }
 
-  const  handleSubmit = () => {
-    props.setContent?   props.setContent(content) : null;
-    props.setTitle ?  props.setTitle(content) : null;
+  const handleSubmit = () => {
+    props.setContent(contentEdit);
     onClose();
   }
 
@@ -40,9 +34,9 @@ export const TextEditModal = (props) => {
         <ModalContent>
           <ModalHeader>Change Test</ModalHeader>
           <ModalCloseButton />
-          
+
           <ModalBody>
-            <Input value={content} onChange={handleOnChange} />
+            <Input value={contentEdit} onChange={handleOnChange} />
           </ModalBody>
 
           <ModalFooter>
@@ -51,6 +45,7 @@ export const TextEditModal = (props) => {
               Cancle
             </Button>
           </ModalFooter>
+          
         </ModalContent>
       </Modal>
     </>

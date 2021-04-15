@@ -1,7 +1,6 @@
 import {
   Box,
   SimpleGrid,
-  Image,
   Flex,
   Heading,
   Text,
@@ -17,16 +16,9 @@ import {
 } from 'react-icons/io5';
 import { useNode } from "@craftjs/core";
 import React, { useEffect, useState } from "react";
-import { EditButtonGroup } from "../../Button/editButtonGroup";
 import { TextEditor } from "../../Editor/text";
 import { ImageEditor } from "../../Editor/image";
-
-const hoverStyle = {
-  background: "#f4f5f7",
-  cursor: 'pointer',
-  borderRadius: "10",
-  border: "2px dashed blue"
-}
+import { hoverStyle } from "../Style/styleDefault";
 
 const Feature = ({ text, icon, iconBg }) => {
   return (
@@ -45,16 +37,22 @@ const Feature = ({ text, icon, iconBg }) => {
   );
 };
 
-export const FeatureComponent = ({ headerContent, tagName }) => {
+export const FeatureComponent = () => {
   const { connectors: { connect, drag }, selected, dragged, actions: { setProp } } = useNode((state) => ({
     selected: state.events.selected,
     dragged: state.events.dragged
   }));
   const [editable, setEditable] = useState(false);
   useEffect(() => { !selected && setEditable(false) }, [selected]);
+
+  let contentDefault = {
+    tag:"Our Story",
+    title:"Hello",
+    imgUrl:""
+  }
   
-  const [content, setContent] = useState("Our Story");
-  const [title, setTitle] = useState("Hello");
+  const [content, setContent] = useState(contentDefault);
+  const [imageUrl, setImageUrl] = useState('https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
   
 
   return (
@@ -70,32 +68,21 @@ export const FeatureComponent = ({ headerContent, tagName }) => {
               bg={useColorModeValue('blue.50', 'blue.900')}
               alignSelf={'flex-start'}
               rounded={'md'}
-              setContent = {(content)=>setContent(content)}
+              setContent = {(content)=>setContent({...contentDefault,tag:content})}
               >
-              {content}
+              {content.tag}
             </TextEditor>
 
             <Heading>
               <TextEditor
-               setTitle = {(content)=>setTitle(content)} 
-               
+              setContent = {(content)=>setContent({...contentDefault,title:content})}
               >
-              {title}
+              {content.title}
               </TextEditor>
             </Heading>
 
             <Text color={'gray.500'} fontSize={'lg'}>
-              {/* <ContentEditable
-                onClick={e => setEditable(true)}
-                html={title ? title : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore'}
-                disabled={!editable}
-                onChange={e =>
-                  setProp(props =>
-                    props.title = e.target.value.replace(/<\/?[^>]+(>|$)/g, "")
-                  )
-                }
-                tagName="p"
-              /> */}
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
             </Text>
             <Stack
               spacing={4}
@@ -129,9 +116,8 @@ export const FeatureComponent = ({ headerContent, tagName }) => {
             <ImageEditor
               rounded={'md'}
               alt={'feature image'}
-              src={
-                'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-              }
+              src={imageUrl}
+              setImageUrl = {(url)=>setImageUrl(url)} 
             />
           </Flex>
         </SimpleGrid>

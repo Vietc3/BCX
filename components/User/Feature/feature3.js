@@ -11,7 +11,7 @@ import {
   } from '@chakra-ui/react';
   import { CheckIcon } from '@chakra-ui/icons';
   import { useNode } from "@craftjs/core";
-import { FeatureComponent2 } from './feature2';
+import { hoverStyle } from "../Style/styleDefault";
   
   // Replace test data with your own
   const features = Array.apply(null, Array(8)).map(function (x, i) {
@@ -28,7 +28,7 @@ import { FeatureComponent2 } from './feature2';
         dragged: state.events.dragged
       }));
     return (
-      <Box p={4} ref={ref => connect(drag(ref))}>
+      <Box p={4} _hover={hoverStyle} ref={ref => connect(drag(ref))}>
         <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
           <Heading fontSize={'3xl'}>This is the headline</Heading>
           <Text color={'gray.600'} fontSize={'xl'}>

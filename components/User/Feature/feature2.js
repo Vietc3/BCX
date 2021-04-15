@@ -2,6 +2,8 @@
 import { Box, SimpleGrid, Icon, Text, Stack, Flex } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
 import { useNode } from "@craftjs/core";
+import { hoverStyle } from "../Style/styleDefault";
+
 
 const Feature = ({ title, text, icon }) => {
   return (
@@ -23,18 +25,12 @@ const Feature = ({ title, text, icon }) => {
   );
 };
 
-export const  FeatureComponent2 = () => {
+export const FeatureComponent2 = () => {
+  const { connectors: { connect, drag }, selected, dragged, actions: { setProp } } = useNode((state) => ({
+    selected: state.events.selected,
+    dragged: state.events.dragged
+  }));
 
-    const { connectors: { connect, drag }, selected, dragged, actions: { setProp } } = useNode((state) => ({
-        selected: state.events.selected,
-        dragged: state.events.dragged
-      }));
-      const hoverStyle = {
-        background: "#f4f5f7",
-        cursor: 'pointer',
-        borderRadius: "10",
-        border: "2px dashed blue"
-      }
   return (
     <Box _hover={hoverStyle} p={4} ref={ref => connect(drag(ref))}>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
