@@ -1,31 +1,21 @@
 import React from "react";
 
 import {
-  chakra,
   Box,
   Flex,
   useColorMode,
   useColorModeValue,
-  VisuallyHidden,
-  HStack,
   Button,
-  useDisclosure,
   Text,
   Spacer,
-  VStack,
-  IconButton,
   Icon,
-  CloseButton,
 } from "@chakra-ui/react";
-import { AiOutlineMenu } from "react-icons/ai";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
-
 
 export const Navbar = () => {
   const { toggleColorMode: toggleMode } = useColorMode();
   const bg = useColorModeValue("white", "gray.800");
-  const mobileNav = useDisclosure();
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const text = useColorModeValue("dark", "light");
   return (
@@ -58,10 +48,8 @@ export const Navbar = () => {
             >
               Export Project
       </Button></Flex>
-
         </Box>
       </Flex>
-
     </React.Fragment>
   );
 }
