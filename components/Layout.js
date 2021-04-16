@@ -10,6 +10,7 @@ import { Header2 } from "./User/Header/header2";
 import { Header3 } from "./User/Header/header3";
 import { Header4 } from "./User/Header/header4";
 import { Header5 } from "./User/Header/header5";
+import { Header6 } from "./User/Header/header6";
 
 import { FeatureComponent } from "./User/Feature/feature";
 import { FeatureComponent2 } from "./User/Feature/feature2";
@@ -19,9 +20,18 @@ import { Testimonial1 } from "./User/Testimonial/testimonial";
 import { Testimonial2 } from "./User/Testimonial/testimonial2";
 import { Testimonial3 } from "./User/Testimonial/testimonial3";
 
+import { CallToAction } from "./User/CallToAction/callToAction";
+import { CallToAction2 } from "./User/CallToAction/callToAction2";
+import { CallToAction3 } from "./User/CallToAction/callToAction3";
+import { CallToAction4 } from "./User/CallToAction/callToAction4";
+
+
 import { SignInUp } from "./User/SignInUp/signInUp";
 import { SignInUp2 } from "./User/SignInUp/signInUp2";
 import { SignInUp3 } from "./User/SignInUp/signInUp3";
+
+import { Pricing } from "./User/Pricing/pricing";
+import { Pricing2 } from "./User/Pricing/pricing2";
 
 import { Navigation } from "./User/Navigation/navigation";
 import { Navigation2 } from "./User/Navigation/navigation2";
@@ -62,8 +72,10 @@ function Layout({ children }) {
                         Testimonial1,Testimonial2,Testimonial3,
                         SignInUp, SignInUp2, SignInUp3,
                         Footer, Footer2, Footer3, Footer4, Footer5,
+                        CallToAction,CallToAction2,CallToAction3,CallToAction4,
                         Navigation, Navigation2,
-                        Header, Header2, Header3, Header4, Header5
+                        Pricing, Pricing2,
+                        Header, Header2, Header3, Header4, Header5, Header6
                     }}
                     enabled={enabled}
                 >

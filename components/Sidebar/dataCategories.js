@@ -6,6 +6,7 @@ import { Header2 } from "../User/Header/header2";
 import { Header3 } from "../User/Header/header3";
 import { Header4 } from "../User/Header/header4";
 import { Header5 } from "../User/Header/header5";
+import { Header6 } from "../User/Header/header6";
 
 import { FeatureComponent } from "../User/Feature/feature";
 import { FeatureComponent2 } from "../User/Feature/feature2";
@@ -14,6 +15,11 @@ import { FeatureComponent3 } from "../User/Feature/feature3";
 import { Testimonial1 } from "../User/Testimonial/testimonial";
 import { Testimonial2 } from "../User/Testimonial/testimonial2";
 import { Testimonial3 } from "../User/Testimonial/testimonial3";
+
+import { CallToAction } from "../User/CallToAction/callToAction";
+import { CallToAction2 } from "../User/CallToAction/callToAction2";
+import { CallToAction3 } from "../User/CallToAction/callToAction3";
+import { CallToAction4 } from "../User/CallToAction/callToAction4";
 
 import { SignInUp } from "../User/SignInUp/signInUp";
 import { SignInUp2 } from "../User/SignInUp/signInUp2";
@@ -26,6 +32,7 @@ import { Footer4 } from "../User/Footer/footer4";
 import { Footer5 } from "../User/Footer/footer5";
 
 import { Pricing } from "../User/Pricing/pricing";
+import { Pricing2 } from "../User/Pricing/pricing2";
 
 export const categories = [
     {
@@ -52,7 +59,8 @@ export const categories = [
                     { name: 'header2', imgSrc: 'header2.PNG', jsx: <Header2 /> },
                     { name: 'header3', imgSrc: 'header3.PNG', jsx: <Header3 /> },
                     { name: 'header4', imgSrc: 'header4.PNG', jsx: <Header4 /> },
-                    { name: 'header5', imgSrc: 'header5.PNG', jsx: <Header5 /> }
+                    { name: 'header5', imgSrc: 'header5.PNG', jsx: <Header5 /> },
+                    { name: 'header6', imgSrc: 'header6.PNG', jsx: <Header6 /> }
                 ]
             },
             {
@@ -72,9 +80,19 @@ export const categories = [
                 ]
             },
             {
+                name: 'Call to action',
+                components: [
+                    { name: 'CTA', imgSrc: 'callToAction.PNG', jsx: <CallToAction /> },
+                    { name: 'CTA2', imgSrc: 'callToAction2.PNG', jsx: <CallToAction2 /> },
+                    { name: 'CTA3', imgSrc: 'callToAction3.PNG', jsx: <CallToAction3 /> },
+                    { name: 'CTA4', imgSrc: 'callToAction4.PNG', jsx: <CallToAction4 /> },
+                ]
+            },
+            {
                 name: 'Pricing',
                 components: [
-                    { name: 'pricing1', imgSrc: 'pricing1.PNG', jsx: <Pricing /> }
+                    { name: 'pricing1', imgSrc: 'pricing1.PNG', jsx: <Pricing /> },
+                    { name: 'pricing2', imgSrc: 'pricing2.PNG', jsx: <Pricing2 /> }
                 ]
             },
             {
@@ -99,7 +117,6 @@ export const categories = [
             { name: 'Team' },
             { name: 'Blog posts' },
             { name: 'Portfolio' },
-            { name: 'Call to action' },
             { name: 'Logo clouds' },
             { name: 'How it works' },
             { name: 'Newsletter' },
