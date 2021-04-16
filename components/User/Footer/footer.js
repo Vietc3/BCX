@@ -13,7 +13,7 @@ import {
   import {AppStoreBadge} from '../../Badges/AppStoreBadge';
   import {PlayStoreBadge} from '../../Badges/PlayStoreBadge';
   import { useNode } from "@craftjs/core";
-  
+  import { hoverStyle } from "../Style/styleDefault";
   const ListHeader = ({ children }) => {
     return (
       <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
@@ -50,12 +50,10 @@ import {
   };
   
   export const Footer = () => {
-    const { connectors: { connect, drag }} = useNode((state) => ({
-        selected: state.events.selected,
-        dragged: state.events.dragged
-      }));
+    const { connectors: { connect, drag }} = useNode();
     return (
       <Box
+      _hover={hoverStyle}
       ref={ref => connect(drag(ref))}
         bg={useColorModeValue('gray.50', 'gray.900')}
         color={useColorModeValue('gray.700', 'gray.200')}>
