@@ -29,7 +29,7 @@ export const TextEditModal = (props) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Change Test</ModalHeader>
+          <ModalHeader>Change Text</ModalHeader>
           <ModalCloseButton />
 
           <ModalBody>

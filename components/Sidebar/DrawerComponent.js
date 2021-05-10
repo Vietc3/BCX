@@ -36,12 +36,13 @@ export const DrawerComponent = (props) => {
     borderRadius: "10",
     border: "2px solid blue"
   }
-  const handleDragStart = () => {
+  const handleDragStart = (component) => {
+    console.log(component);
     onClose()
   }
 
   const imageComponent = drawer.components?.map((component, i) => (
-    <Box onDragStart={handleDragStart} _hover={hoverStyle} p={3} ref={ref => connectors.create(ref, component.jsx)} key={component.name}> <Image src={"/imagesComponents/" + component.imgSrc} /></Box>
+    <Box onDragStart={()=>handleDragStart(component.name)} _hover={hoverStyle} p={3} ref={ref => connectors.create(ref, component.jsx)} key={component.name}> <Image src={"/imagesComponents/" + component.imgSrc} /></Box>
   ))
   return (
     <>

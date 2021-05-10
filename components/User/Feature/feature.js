@@ -8,17 +8,20 @@ import {
   StackDivider,
   Icon,
   useColorModeValue,
+  Button,
 } from '@chakra-ui/react';
 import {
   IoAnalyticsSharp,
   IoLogoBitcoin,
   IoSearchSharp,
 } from 'react-icons/io5';
-import { useNode } from "@craftjs/core";
+import { useNode, useEditor } from "@craftjs/core";
 import React, { useEffect, useState } from "react";
 import { TextEditor } from "../../Editor/text";
 import { ImageEditor } from "../../Editor/image";
 import { hoverStyle } from "../Style/styleDefault";
+import { EditComponent } from "../../Button/editComponent";
+import { useHover } from '../../Hooks/useHoverVersion2.ts';
 
 const Feature = ({ text, icon, iconBg }) => {
   return (
@@ -38,7 +41,8 @@ const Feature = ({ text, icon, iconBg }) => {
 };
 
 export const FeatureComponent = () => {
-  const { connectors: { connect, drag }} = useNode();
+  const { hoverProps, isHovered } = useHover({});
+  const { connectors: { connect, drag },actions: {}} = useNode();
  
   let contentDefault = {
     tag:"Our Story",
@@ -48,10 +52,17 @@ export const FeatureComponent = () => {
   
   const [content, setContent] = useState(contentDefault);
   const [imageUrl, setImageUrl] = useState('https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-  
+  const {selectedNodeId, actions} = useEditor((state) => ({
+    selectedNodeId: state.events.selected
+  }));
   return (
     <>
-      <Box _hover={hoverStyle} w="100%" py={7} ref={ref => connect(drag(ref))}>
+      <Box {...hoverProps} _hover={hoverStyle} w="100%" py={0} ref={ref => connect(drag(ref))}>
+
+      <EditComponent handleDelete={() =>{
+        actions.delete(selectedNodeId)
+      } } isHovered={isHovered}/>
+  
         <SimpleGrid pl={10} columns={{ base: 1, md: 2 }} spacing={10}>
           <Stack spacing={4}>
 

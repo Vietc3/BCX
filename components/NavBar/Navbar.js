@@ -12,12 +12,20 @@ import {
 } from "@chakra-ui/react";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { useRecoilState } from 'recoil';
+import { PageState } from '../../store/Page/pageState';
+import { CreatePageModal } from '../Modal/createPage';
 
 export const Navbar = () => {
   const { toggleColorMode: toggleMode } = useColorMode();
   const bg = useColorModeValue("white", "gray.800");
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const text = useColorModeValue("dark", "light");
+  const [page, setPage] = useRecoilState(PageState);
+  const handleCreatPage = (pageCreate) => {
+    setPage(pageCreate)
+  }
+
   return (
     <React.Fragment>
       <Flex>
@@ -33,21 +41,15 @@ export const Navbar = () => {
           leftIcon={<SwitchIcon />}>
           Change Mode
       </Button>
+
         <Spacer />
         <Box pr={8} w="30%">
           <Flex>
             <Text pt="3" fontSize="sm" color="teal">Preview in a new Tab <Icon as={BsBoxArrowUpRight} w={5} h={5} pb="1" /></Text>
             <Spacer />
-            <Button
-              borderRadius="10"
-              colorScheme="teal"
-              size="md"
-              fontSize="md"
-              variant="solid"
-              ml={{ base: "0", md: "3" }}
-            >
-              Export Project
-      </Button></Flex>
+          
+      <CreatePageModal handleCreatPage={(page)=>handleCreatPage(page)} />
+      </Flex>
         </Box>
       </Flex>
     </React.Fragment>

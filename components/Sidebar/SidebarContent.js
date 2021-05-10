@@ -15,7 +15,7 @@ const hoverStyle = {
     borderRadius:"10"
 }
 
-export const SidebarContent = (props) => {
+export const SidebarContent = () => {
     const [drawer, setDrawer] = useRecoilState(drawerState);
     const handleMouseOver = (component) => {
         setDrawer({ ...drawer, content: component.name, components: component.components })
