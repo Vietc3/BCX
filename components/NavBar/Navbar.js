@@ -10,6 +10,7 @@ import {
   Spacer,
   Icon,
 } from "@chakra-ui/react";
+
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { useRecoilState } from 'recoil';
@@ -22,9 +23,11 @@ export const Navbar = () => {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const text = useColorModeValue("dark", "light");
   const [page, setPage] = useRecoilState(PageState);
+
   const handleCreatPage = (pageCreate) => {
     setPage(pageCreate)
   }
+
 
   return (
     <React.Fragment>
@@ -41,6 +44,19 @@ export const Navbar = () => {
           leftIcon={<SwitchIcon />}>
           Change Mode
       </Button>
+
+      <Button
+          borderRadius="10"
+          size="md"
+          fontSize="md"
+          aria-label={`Switch to ${text} mode`}
+          variant="ghost"
+          bg={bg}
+          ml={{ base: "0", md: "3" }}
+          leftIcon={<SwitchIcon />}>
+          LOG
+      </Button>
+
 
         <Spacer />
         <Box pr={8} w="30%">

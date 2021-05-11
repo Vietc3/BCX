@@ -25,6 +25,7 @@
     "react-icons": "^4.2.0",
     "recoil": "^0.2.0",
     "styled-components": "^5.2.3",
+    "swr": "^0.5.6",
     "url-loader": "^4.1.1"
   }
 }
