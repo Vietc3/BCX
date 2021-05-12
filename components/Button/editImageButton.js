@@ -6,7 +6,6 @@ import {
 export const EditImageButton = (props) => {
     
     const { isHovered, setImageUrl} = props;
-    console.log(setImageUrl);
     const uploadImage = (e) =>{
         setImageUrl(URL.createObjectURL(e.target.files[0]))
     }

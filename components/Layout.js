@@ -78,12 +78,12 @@ function Layout({ children }) {
                         Header, Header2, Header3, Header4, Header5, Header6
                     }}
                     enabled={enabled}
-                    onNodesChange={query => {
-                        const json = query.serialize();
-                        // save to server
-                       console.log(json);
+                    // onNodesChange={query => {
+                    //     const json = query.serialize();
+                    //     // save to server
+                    //    console.log(json);
 
-                      }}
+                    //   }}
                 >
                     <DrawerComponent openDrawer={openDrawer} />
                     <Frame>

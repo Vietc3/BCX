@@ -44,20 +44,6 @@ export const Navbar = () => {
           leftIcon={<SwitchIcon />}>
           Change Mode
       </Button>
-
-      <Button
-          borderRadius="10"
-          size="md"
-          fontSize="md"
-          aria-label={`Switch to ${text} mode`}
-          variant="ghost"
-          bg={bg}
-          ml={{ base: "0", md: "3" }}
-          leftIcon={<SwitchIcon />}>
-          LOG
-      </Button>
-
-
         <Spacer />
         <Box pr={8} w="30%">
           <Flex>

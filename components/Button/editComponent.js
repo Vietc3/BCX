@@ -2,7 +2,7 @@ import {
     Box,
     Button
 } from "@chakra-ui/react";
-import { hoverStyle } from "./Style/styleDefault";
+import {EditFutureComponent} from '../Modal/editFutureComponent'
 
 export const EditComponent = (props) => {
     return (
@@ -10,6 +10,7 @@ export const EditComponent = (props) => {
             <Button colorScheme="red" size="xs" onClick={props.handleDelete}>
                 Delete
              </Button>
+             <EditFutureComponent content={props.content}  setContent={props.setContent}/>
         </Box>
     )
 }
