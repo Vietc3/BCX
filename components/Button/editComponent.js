@@ -10,7 +10,7 @@ export const EditComponent = (props) => {
             <Button colorScheme="red" size="xs" onClick={props.handleDelete}>
                 Delete
              </Button>
-             <EditFutureComponent content={props.content}  setContent={props.setContent}/>
+             <EditFutureComponent content={props.content}  setContent={props.setContent}  setContentCustom={props.setContentCustom}/>
         </Box>
     )
 }

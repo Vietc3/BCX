@@ -33,7 +33,7 @@ import React, { useState } from "react";
 
 export const EditFutureComponent = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {content, setContent} =props
+  const {content, setContent, setContentCustom } =props
   return (
     <>
       <Button size="xs" colorScheme="red" onClick={onOpen}>Edit Component</Button>
@@ -42,7 +42,7 @@ export const EditFutureComponent = (props) => {
         <ModalContent>
           <ModalHeader>Content</ModalHeader>
           <ModalCloseButton />
-          <EditContent content={content} setContent={setContent}/>
+          <EditContent content={content} setContent={setContent} setContentCustom={setContentCustom}/>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Cancle
@@ -57,7 +57,7 @@ export const EditFutureComponent = (props) => {
 
 const EditContent = (props) => {
 
-  const {content,setContent} = props;
+  const {content,setContent,setContentCustom} = props;
   const [imageUrl, setImageUrl] = useState(content.imgUrl);
   const formik = useFormik({
     initialValues: {
@@ -65,9 +65,11 @@ const EditContent = (props) => {
       title: content.title,
       imgUrl:imageUrl
     },
-    onSubmit: values => {
+    onSubmit: async values => {
       values.imgUrl=imageUrl;
+     await setContentCustom(values)
       setContent(values)
+     
     },
   });
   const uploadImage = (e) =>{
