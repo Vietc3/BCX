@@ -29,7 +29,7 @@ const Feature = ({ text, icon, avatarSize = 'md', iconBg,author }) => {
   return (
     <Stack direction={'row'} align={'center'}>
       <Avatar name={author.name} size={avatarSize} src={author.avatar} />
-      <Text fontWeight={600}>{text}</Text>
+      <Text fontWeight={600}>{author.name}</Text>
     </Stack>
   );
 };
@@ -38,8 +38,10 @@ export const FeatureComponent = () => {
   const { hoverProps, isHovered } = useHover({});
   const { connectors: { connect, drag }, actions: { } } = useNode();
   let contentDefault = {
-    tag: "Our Story",
+    topic: "Our Story",
     title: "Hello",
+    description:'ABC',
+    author:'Default',
     imgUrl: "https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
   }
   const [content, setContent] = useState(contentDefault);
@@ -58,7 +60,6 @@ export const FeatureComponent = () => {
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body:JSON.stringify(data)})
-     console.log(response);
   }, [content])
 
   const setCustomContent = (contentEdited) =>{
@@ -86,7 +87,7 @@ export const FeatureComponent = () => {
               rounded={'md'}
 
             >
-              {content.tag}
+              {content.topic}
             </Text>
 
             <Heading as="div" >
@@ -108,7 +109,7 @@ export const FeatureComponent = () => {
               <Feature
                  author={{
                   id: '1',
-                  name: "VIET",
+                  name: content.author,
                   avatar:
                       'https://images.unsplash.com/photo-1554384645-13eab165c24b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80',
               }}
@@ -116,7 +117,7 @@ export const FeatureComponent = () => {
                   <Icon as={FaUser} color={'yellow.500'} w={5} h={5} />
                 }
                 iconBg={useColorModeValue('yellow.100', 'yellow.900')}
-                text={'Author'}
+                text={content.author}
               />
             </Stack>
           </Stack>

@@ -29,11 +29,13 @@ import {
 } from "@chakra-ui/react"
 
 import { useFormik } from 'formik';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useSWR from 'swr';
+import { fetcher } from '../../utils/fetcher';
 
 export const EditFutureComponent = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {content, setContent, setContentCustom } =props
+  const { content, setContent, setContentCustom } = props
   return (
     <>
       <Button size="xs" colorScheme="red" onClick={onOpen}>Edit Component</Button>
@@ -42,7 +44,7 @@ export const EditFutureComponent = (props) => {
         <ModalContent>
           <ModalHeader>Content</ModalHeader>
           <ModalCloseButton />
-          <EditContent content={content} setContent={setContent} setContentCustom={setContentCustom}/>
+          <EditContent content={content} setContent={setContent} setContentCustom={setContentCustom} />
         </ModalContent>
       </Modal>
     </>
@@ -50,26 +52,73 @@ export const EditFutureComponent = (props) => {
 }
 
 
+const Selector = ({ nameSelector,value, idSelector, articles, placeholder,setContent }) => {
+  console.log(articles);
+console.log('Đã render');
+  return (
+    <FormControl as={GridItem} colSpan={[6, 3]}>
+      <FormLabel
+        fontSize="sm"
+        fontWeight="md"
+        color={useColorModeValue("gray.700", "gray.50")}
+      >
+        {nameSelector}
+      </FormLabel>
+      <Select
+        id={idSelector}
+        name={nameSelector}
+        autoComplete={nameSelector}
+        placeholder={placeholder}
+        mt={1}
+        focusBorderColor="brand.400"
+        shadow="sm"
+        size="sm"
+        w="full"
+        rounded="md"
+        value={value[idSelector]}
+        onChange={(e)=>setContent(e.target.value)}
+      >
+        <option value={articles.topic}>{articles.topic}</option>
+        <option value={articles.title}>{articles.title}</option>
+        <option value={articles.description}>{articles.description}</option>
+        <option value={articles.author}>{articles.author}</option>
+        <option value={articles.image_cover[0].url}>{articles.image_cover[0].url}</option>
+      </Select>
+    </FormControl>
+  )
+}
+
+
 const EditContent = (props) => {
 
-  const {content,setContent,setContentCustom} = props;
-  const [imageUrl, setImageUrl] = useState(content.imgUrl);
+  const { content, setContent, setContentCustom } = props;
+  const [contentType, setContentType] = useState('articles');
+  const [contentEntity, setContentEntity] = useState('60921566f06d3b2b94d6b30b');
+  const [dataEntity, setDataEntity] = useState();
+
+  const [contentEditor, setContentEditor] = useState(content);
+  const { data, error } = useSWR('http://localhost:1337/' + contentType, fetcher);
+
   const formik = useFormik({
     initialValues: {
-      tag: content.tag,
-      title: content.title,
-      imgUrl:imageUrl
+      topic: contentEditor.topic,
+      title: contentEditor.title,
+      description: contentEditor.description,
+      author: contentEditor.author,
+      imgUrl: contentEditor.imgUrl
     },
     onSubmit: async values => {
-      values.imgUrl=imageUrl;
-     await setContentCustom(values)
+      values = contentEditor;
+      await setContentCustom(values)
       setContent(values)
-     
     },
   });
-  const uploadImage = (e) =>{
-    setImageUrl(URL.createObjectURL(e.target.files[0]))
-}
+
+  useEffect(() => {
+    let result = data ? data.filter((entity) => entity.id === contentEntity) : null
+    setDataEntity(result)
+  }, [contentEntity])
+
 
   return (
     <Box bg={useColorModeValue("gray.50", "inherit")} p={10}>
@@ -89,7 +138,7 @@ const EditContent = (props) => {
                 fontSize="sm"
                 color={useColorModeValue("gray.600", "gray.400")}
               >
-               This is where content is edited
+                This is where content is edited
                 </Text>
             </Box>
           </GridItem>
@@ -108,14 +157,24 @@ const EditContent = (props) => {
                 p={{ sm: 6 }}
               >
                 <SimpleGrid columns={3} spacing={6}>
-                <FormControl as={GridItem} colSpan={[6, 3]}>
+                  <FormControl as={GridItem} colSpan={[6, 3]}>
+                    <FormLabel
+                      for="content-type"
+                      fontSize="sm"
+                      fontWeight="bold"
+                      color={useColorModeValue("gray.700", "gray.50")}
+                    >
+                      CHOOSE CONTENT SOURCE
+                    </FormLabel>
+                  </FormControl>
+                  <FormControl as={GridItem} colSpan={[6, 3]}>
                     <FormLabel
                       for="content-type"
                       fontSize="sm"
                       fontWeight="md"
                       color={useColorModeValue("gray.700", "gray.50")}
                     >
-                     Content Type
+                      Content Type
                     </FormLabel>
                     <Select
                       id="content-type"
@@ -128,10 +187,11 @@ const EditContent = (props) => {
                       size="sm"
                       w="full"
                       rounded="md"
+                      value={contentType}
+                      onChange={(e) => setContentType(e.target.value)}
                     >
-                      <option>Articles</option>
-                      <option>Blogs</option>
-                      <option>Products</option>
+                      <option value="articles">Articles</option>
+                      <option value="products">Products</option>
                     </Select>
                   </FormControl>
 
@@ -143,7 +203,7 @@ const EditContent = (props) => {
                       fontWeight="md"
                       color={useColorModeValue("gray.700", "gray.50")}
                     >
-                     Entity
+                      Entity
                     </FormLabel>
                     <Select
                       id="entity"
@@ -156,242 +216,43 @@ const EditContent = (props) => {
                       size="sm"
                       w="full"
                       rounded="md"
-                    >
-                      <option>Articles 1</option>
-                      <option>Articles 2</option>
-                      <option>Articles 3</option>
+                      value={contentEntity}
+                      onChange={(e) => setContentEntity(e.target.value)}
+
+                    >{
+                        data ? data.map((entity) =>
+                        (
+                          <option value={entity._id} key={entity._id}>{entity.title}</option>
+                        )
+                        )
+                          : <option>Articles 1</option>
+                      }
+
                     </Select>
                   </FormControl>
-
-
                   <FormControl as={GridItem} colSpan={[6, 3]}>
                     <FormLabel
+                      for="content-type"
                       fontSize="sm"
-                      fontWeight="md"
+                      fontWeight="bold"
                       color={useColorModeValue("gray.700", "gray.50")}
                     >
-                     Tag
+                      SET CONTENT COMPONENT
                     </FormLabel>
-                    <Select
-                      id="tag"
-                      name="tag"
-                      autoComplete="tag"
-                      placeholder="Select Content"
-                      mt={1}
-                      focusBorderColor="brand.400"
-                      shadow="sm"
-                      size="sm"
-                      w="full"
-                      rounded="md"
-                    >
-                      <option>Articles</option>
-                      <option>Blogs</option>
-                      <option>Products</option>
-                    </Select>
                   </FormControl>
-
-                  <FormControl as={GridItem} colSpan={[6, 3]}>
-                    <FormLabel
-                      fontSize="sm"
-                      fontWeight="md"
-                      color={useColorModeValue("gray.700", "gray.50")}
-                    >
-                     Title
-                    </FormLabel>
-                    <Select
-                      id="title"
-                      name="title"
-                      autoComplete="title"
-                      placeholder="Select Content"
-                      mt={1}
-                      focusBorderColor="brand.400"
-                      shadow="sm"
-                      size="sm"
-                      w="full"
-                      rounded="md"
-                    >
-                      <option>Articles</option>
-                      <option>Blogs</option>
-                      <option>Products</option>
-                    </Select>
-                  </FormControl>
-
-                  <FormControl as={GridItem} colSpan={[6, 3]}>
-                    <FormLabel
-                      fontSize="sm"
-                      fontWeight="md"
-                      color={useColorModeValue("gray.700", "gray.50")}
-                    >
-                     Description
-                    </FormLabel>
-                    <Select
-                      id="description"
-                      name="description"
-                      autoComplete="description"
-                      placeholder="Select Content"
-                      mt={1}
-                      focusBorderColor="brand.400"
-                      shadow="sm"
-                      size="sm"
-                      w="full"
-                      rounded="md"
-                    >
-                      <option>Articles</option>
-                      <option>Blogs</option>
-                      <option>Products</option>
-                    </Select>
-                  </FormControl>
-
-                  <FormControl as={GridItem} colSpan={[6, 3]}>
-                    <FormLabel
-                      fontSize="sm"
-                      fontWeight="md"
-                      color={useColorModeValue("gray.700", "gray.50")}
-                    >
-                     Author
-                    </FormLabel>
-                    <Select
-                      id="author"
-                      name="author"
-                      autoComplete="author"
-                      placeholder="Select Author"
-                      mt={1}
-                      focusBorderColor="brand.400"
-                      shadow="sm"
-                      size="sm"
-                      w="full"
-                      rounded="md"
-                    >
-                      <option>Articles</option>
-                      <option>Blogs</option>
-                      <option>Products</option>
-                    </Select>
-                  </FormControl>
-
-
-
-                  
-
-
-                  <FormControl id="tag" as={GridItem} colSpan={[3, 2]}>
-                    <FormLabel
-                      fontSize="sm"
-                      fontWeight="md"
-                      color={useColorModeValue("gray.700", "gray.50")}
-                    >
-                      Tag
-                      </FormLabel>
-                    <InputGroup size="sm">
-                      <Input
-                        type="tel"
-                        placeholder={content.tag}
-                        focusBorderColor="brand.400"
-                        rounded="md"
-                        onChange={formik.handleChange}
-                        value={formik.values.tag}
-                      />
-                    </InputGroup>
-                  </FormControl>
-                </SimpleGrid>
-
-                <div>
-                  <FormControl id="title" mt={1}>
-                    <FormLabel
-                      fontSize="sm"
-                      fontWeight="md"
-                      color={useColorModeValue("gray.700", "gray.50")}
-                    >
-                      Title
-                      </FormLabel>
-                      <InputGroup size="sm">
-                      <Input
-                        type="tel"
-                        placeholder={content.title}
-                        focusBorderColor="brand.400"
-                        rounded="md"
-                        onChange={formik.handleChange}
-                        value={formik.values.title}
-                      />
-                    </InputGroup>     
-                  </FormControl>
-                </div>
                
+                  <Selector  value={contentEditor} setContent={(e)=>setContentEditor({...contentEditor,topic:e})}  nameSelector="Topic" idSelector="topic" placeholder="Select Content For Topic" articles={dataEntity ? dataEntity[0] : { author: 'xxx', title: 'xxx', description: 'xxx', topic: 'xxx', image_cover: [{ url: 'xxx' }] }} />
+                  <Selector  value={contentEditor} setContent={(e)=>setContentEditor({...contentEditor,title:e})} nameSelector="Title" idSelector="title" placeholder="Select Content For Title" articles={dataEntity ? dataEntity[0] : { author: 'xxx', title: 'xxx', description: 'xxx', topic: 'xxx', image_cover: [{ url: 'xxx' }] }} />
+                  <Selector  value={contentEditor} setContent={(e)=>setContentEditor({...contentEditor,description:e})} nameSelector="Description" idSelector="description" placeholder="Select Content For Description" articles={dataEntity ? dataEntity[0] : { author: 'xxx', title: 'xxx', description: 'xxx', topic: 'xxx', image_cover: [{ url: 'xxx' }] }} />
+                  <Selector  value={contentEditor} setContent={(e)=>setContentEditor({...contentEditor,author:e})} nameSelector="Author" idSelector="author" placeholder="Select Content For Author" articles={dataEntity ? dataEntity[0] : { author: 'xxx', title: 'xxx', description: 'xxx', topic: 'xxx', image_cover: [{ url: 'xxx' }] }} />
+                  <Selector value={contentEditor}  setContent={(e)=>setContentEditor({...contentEditor,imgUrl:'http://localhost:1337'+e})}  nameSelector="Image" idSelector="image_cover[0].url" placeholder="Select Content For Image URL" articles={dataEntity ? dataEntity[0] : { author: 'xxx', title: 'xxx', description: 'xxx', topic: 'xxx', image_cover: [{ url: 'xxx' }] }} />
+
+                </SimpleGrid>
                 <div >
-                  <Image src={imageUrl} alt="Segun Adebayo" />
+                  <Image src={contentEditor.imgUrl} alt="Segun Adebayo" />
                 </div>
-                <FormControl>
-                  <FormLabel
-                    fontSize="sm"
-                    fontWeight="md"
-                    color={useColorModeValue("gray.700", "gray.50")}
-                  >
-                    Cover photo
-                    </FormLabel>
-                  <Flex
-                    mt={1}
-                    justify="center"
-                    px={6}
-                    pt={5}
-                    pb={6}
-                    borderWidth={2}
-                    borderColor={useColorModeValue("gray.300", "gray.500")}
-                    borderStyle="dashed"
-                    rounded="md"
-                  >
-                    <Stack spacing={1} textAlign="center">
-                      <Icon
-                        mx="auto"
-                        boxSize={12}
-                        color={useColorModeValue("gray.400", "gray.500")}
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 48 48"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                          strokeWidth="2"
-                          strokLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </Icon>
-                      <Flex
-                        fontSize="sm"
-                        color={useColorModeValue("gray.600", "gray.400")}
-                        alignItems="baseline"
-                      >
-                        <chakra.label
-                          for="file-upload"
-                          cursor="pointer"
-                          rounded="md"
-                          fontSize="md"
-                          color={useColorModeValue("brand.600", "brand.200")}
-                          pos="relative"
-                          _hover={{
-                            color: useColorModeValue("brand.400", "brand.300"),
-                          }}
-                        >
-                          <span>Upload a file</span>
-                          {/* <VisuallyHidden> */}
-                            <input
-                            id="imgUrl"
-                              name="file-upload"
-                              type="file"
-                              onChange={uploadImage}
-                            />
-                          {/* </VisuallyHidden> */}
-                        </chakra.label>
-                        <Text pl={1}>or drag and drop</Text>
-                      </Flex>
-                      <Text
-                        fontSize="xs"
-                        color={useColorModeValue("gray.500", "gray.50")}
-                      >
-                        PNG, JPG, GIF up to 10MB
-                        </Text>
-                    </Stack>
-                  </Flex>
-                </FormControl>
+
+
               </Stack>
               <Box
                 px={{ base: 4, sm: 6 }}
