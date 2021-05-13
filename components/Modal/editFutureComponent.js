@@ -20,7 +20,7 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  InputLeftAddon,
+  Select,
   FormHelperText,
   Textarea,
   Avatar,
@@ -43,11 +43,6 @@ export const EditFutureComponent = (props) => {
           <ModalHeader>Content</ModalHeader>
           <ModalCloseButton />
           <EditContent content={content} setContent={setContent} setContentCustom={setContentCustom}/>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Cancle
-              </Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
@@ -113,6 +108,171 @@ const EditContent = (props) => {
                 p={{ sm: 6 }}
               >
                 <SimpleGrid columns={3} spacing={6}>
+                <FormControl as={GridItem} colSpan={[6, 3]}>
+                    <FormLabel
+                      for="content-type"
+                      fontSize="sm"
+                      fontWeight="md"
+                      color={useColorModeValue("gray.700", "gray.50")}
+                    >
+                     Content Type
+                    </FormLabel>
+                    <Select
+                      id="content-type"
+                      name="content-type"
+                      autoComplete="content-type"
+                      placeholder="Select Content Type"
+                      mt={1}
+                      focusBorderColor="brand.400"
+                      shadow="sm"
+                      size="sm"
+                      w="full"
+                      rounded="md"
+                    >
+                      <option>Articles</option>
+                      <option>Blogs</option>
+                      <option>Products</option>
+                    </Select>
+                  </FormControl>
+
+
+                  <FormControl as={GridItem} colSpan={[6, 3]}>
+                    <FormLabel
+                      for="Entity"
+                      fontSize="sm"
+                      fontWeight="md"
+                      color={useColorModeValue("gray.700", "gray.50")}
+                    >
+                     Entity
+                    </FormLabel>
+                    <Select
+                      id="entity"
+                      name="entity"
+                      autoComplete="entity"
+                      placeholder="Select entity"
+                      mt={1}
+                      focusBorderColor="brand.400"
+                      shadow="sm"
+                      size="sm"
+                      w="full"
+                      rounded="md"
+                    >
+                      <option>Articles 1</option>
+                      <option>Articles 2</option>
+                      <option>Articles 3</option>
+                    </Select>
+                  </FormControl>
+
+
+                  <FormControl as={GridItem} colSpan={[6, 3]}>
+                    <FormLabel
+                      fontSize="sm"
+                      fontWeight="md"
+                      color={useColorModeValue("gray.700", "gray.50")}
+                    >
+                     Tag
+                    </FormLabel>
+                    <Select
+                      id="tag"
+                      name="tag"
+                      autoComplete="tag"
+                      placeholder="Select Content"
+                      mt={1}
+                      focusBorderColor="brand.400"
+                      shadow="sm"
+                      size="sm"
+                      w="full"
+                      rounded="md"
+                    >
+                      <option>Articles</option>
+                      <option>Blogs</option>
+                      <option>Products</option>
+                    </Select>
+                  </FormControl>
+
+                  <FormControl as={GridItem} colSpan={[6, 3]}>
+                    <FormLabel
+                      fontSize="sm"
+                      fontWeight="md"
+                      color={useColorModeValue("gray.700", "gray.50")}
+                    >
+                     Title
+                    </FormLabel>
+                    <Select
+                      id="title"
+                      name="title"
+                      autoComplete="title"
+                      placeholder="Select Content"
+                      mt={1}
+                      focusBorderColor="brand.400"
+                      shadow="sm"
+                      size="sm"
+                      w="full"
+                      rounded="md"
+                    >
+                      <option>Articles</option>
+                      <option>Blogs</option>
+                      <option>Products</option>
+                    </Select>
+                  </FormControl>
+
+                  <FormControl as={GridItem} colSpan={[6, 3]}>
+                    <FormLabel
+                      fontSize="sm"
+                      fontWeight="md"
+                      color={useColorModeValue("gray.700", "gray.50")}
+                    >
+                     Description
+                    </FormLabel>
+                    <Select
+                      id="description"
+                      name="description"
+                      autoComplete="description"
+                      placeholder="Select Content"
+                      mt={1}
+                      focusBorderColor="brand.400"
+                      shadow="sm"
+                      size="sm"
+                      w="full"
+                      rounded="md"
+                    >
+                      <option>Articles</option>
+                      <option>Blogs</option>
+                      <option>Products</option>
+                    </Select>
+                  </FormControl>
+
+                  <FormControl as={GridItem} colSpan={[6, 3]}>
+                    <FormLabel
+                      fontSize="sm"
+                      fontWeight="md"
+                      color={useColorModeValue("gray.700", "gray.50")}
+                    >
+                     Author
+                    </FormLabel>
+                    <Select
+                      id="author"
+                      name="author"
+                      autoComplete="author"
+                      placeholder="Select Author"
+                      mt={1}
+                      focusBorderColor="brand.400"
+                      shadow="sm"
+                      size="sm"
+                      w="full"
+                      rounded="md"
+                    >
+                      <option>Articles</option>
+                      <option>Blogs</option>
+                      <option>Products</option>
+                    </Select>
+                  </FormControl>
+
+
+
+                  
+
+
                   <FormControl id="tag" as={GridItem} colSpan={[3, 2]}>
                     <FormLabel
                       fontSize="sm"

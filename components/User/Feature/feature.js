@@ -8,13 +8,14 @@ import {
   StackDivider,
   Icon,
   useColorModeValue, Image,
-  Button,
+  Avatar,
 } from '@chakra-ui/react';
 import {
   IoAnalyticsSharp,
   IoLogoBitcoin,
   IoSearchSharp,
 } from 'react-icons/io5';
+import { FaUser } from "react-icons/fa";
 import { useNode, useEditor } from "@craftjs/core";
 import React, { useState, useEffect } from "react";
 import { TextEditor } from "../../Editor/text";
@@ -24,18 +25,10 @@ import { EditComponent } from "../../Button/editComponent";
 import { useHover } from '../../Hooks/useHoverVersion2.ts';
 import { updatePage } from '../../../utils/updatePage';
 
-const Feature = ({ text, icon, iconBg }) => {
+const Feature = ({ text, icon, avatarSize = 'md', iconBg,author }) => {
   return (
     <Stack direction={'row'} align={'center'}>
-      <Flex
-        w={8}
-        h={8}
-        align={'center'}
-        justify={'center'}
-        rounded={'full'}
-        bg={iconBg}>
-        {icon}
-      </Flex>
+      <Avatar name={author.name} size={avatarSize} src={author.avatar} />
       <Text fontWeight={600}>{text}</Text>
     </Stack>
   );
@@ -111,29 +104,23 @@ export const FeatureComponent = () => {
                   borderColor={useColorModeValue('gray.100', 'gray.700')}
                 />
               }>
+             
               <Feature
+                 author={{
+                  id: '1',
+                  name: "VIET",
+                  avatar:
+                      'https://images.unsplash.com/photo-1554384645-13eab165c24b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80',
+              }}
                 icon={
-                  <Icon as={IoAnalyticsSharp} color={'yellow.500'} w={5} h={5} />
+                  <Icon as={FaUser} color={'yellow.500'} w={5} h={5} />
                 }
                 iconBg={useColorModeValue('yellow.100', 'yellow.900')}
-                text={'Business Planning'}
-              />
-              <Feature
-                icon={<Icon as={IoLogoBitcoin} color={'green.500'} w={5} h={5} />}
-                iconBg={useColorModeValue('green.100', 'green.900')}
-                text={'Financial Planning'}
-              />
-              <Feature
-                icon={
-                  <Icon as={IoSearchSharp} color={'purple.500'} w={5} h={5} />
-                }
-                iconBg={useColorModeValue('purple.100', 'purple.900')}
-                text={'Market Analysis'}
+                text={'Author'}
               />
             </Stack>
           </Stack>
           <Flex>
-
             <Image
               rounded={'md'}
               alt={'feature image'}
