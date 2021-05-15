@@ -53,8 +53,6 @@ export const EditFutureComponent = (props) => {
 
 
 const Selector = ({ nameSelector,value, idSelector, articles, placeholder,setContent }) => {
-  console.log(articles);
-console.log('Đã render');
   return (
     <FormControl as={GridItem} colSpan={[6, 3]}>
       <FormLabel

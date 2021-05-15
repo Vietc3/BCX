@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, BoxProps, Text, useBreakpointValue } from '@chakra-ui/react';
+import { Box, BoxProps, Text, useBreakpointValue, Icon, chakra, Flex } from '@chakra-ui/react';
 import useColorTheme from '../hooks/useColorTheme';
 import styles from '../../constants/styles';
 import Image from '../Image/Image';
@@ -7,6 +7,9 @@ import { URL_BASE } from '../../constants/index';
 import Card from './Card';
 import _ from 'lodash';
 import { useRouter } from 'next/router';
+import { BsFillPersonFill } from "react-icons/bs"
+import { BiShow } from "react-icons/bi"
+import { BsCalendar } from "react-icons/bs"
 
 const ArticleCard = ({
     post,
@@ -16,7 +19,7 @@ const ArticleCard = ({
     titleFontSize = '1.4rem',
     ...props
 }) => {
-    
+
     const colors = useColorTheme();
     const flexDirection = useBreakpointValue({ base: 'column', md: column ? 'column' : 'row' });
     const router = useRouter();
@@ -30,7 +33,7 @@ const ArticleCard = ({
     const getUrlImage = (image) => {
         return URL_BASE + image
     }
-    
+
     return (
         <Card
             p={4}
@@ -81,6 +84,50 @@ const ArticleCard = ({
                     {post.description.substr(0, 120)}
                     {post.description.length > 120 ? '...' : ''}
                 </Text>
+                <Flex
+                    alignItems="center"
+                    mt={2}
+                >
+                    <Icon
+                        as={BsCalendar}
+                        h={6}
+                        w={6}
+                        mr={2}
+                    />
+
+                    <chakra.h1 px={2} fontSize="sm">
+                    { post.public_date}
+                    </chakra.h1>
+                </Flex>
+                <Flex
+                    alignItems="center"
+                    mt={2}
+                >
+                    <Icon
+                        as={BsFillPersonFill}
+                        h={6}
+                        w={6}
+                        mr={2}
+                    />
+                    <chakra.h1 px={2} fontSize="sm">
+                    {post.author}
+                    </chakra.h1>
+                </Flex>
+                
+                <Flex
+                    alignItems="center"
+                    mt={2}
+                >
+                    <Icon
+                        as={BiShow}
+                        h={6}
+                        w={6}
+                        mr={2}
+                    />
+                    <chakra.h1 px={2} fontSize="sm">
+                        {post.views}
+                    </chakra.h1>
+                </Flex>
             </Box>
         </Card>
     );

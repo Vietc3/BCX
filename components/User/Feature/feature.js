@@ -21,7 +21,7 @@ import React, { useState, useEffect } from "react";
 import { TextEditor } from "../../Editor/text";
 import { ImageEditor } from "../../Editor/image";
 import { hoverStyle } from "../Style/styleDefault";
-import { EditComponent } from "../../Button/editComponent";
+import { EditFuture1 } from "../../Button/editComponent";
 import { useHover } from '../../Hooks/useHoverVersion2.ts';
 import { updatePage } from '../../../utils/updatePage';
 
@@ -50,27 +50,23 @@ export const FeatureComponent = () => {
   }));
 
   useEffect(async() => {
-    // content? actions.setCustom(selectedNodeId, (custom) => (custom.content = content)):null;
     const data={components:JSON.parse(query.serialize())}
-    console.log(query.serialize());
     const response  =await fetch('http://localhost:1337/pages/609a2721a0fa655dac819468',{
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body:JSON.stringify(data)})
   }, [content])
 
   const setCustomContent = (contentEdited) =>{
     actions.setCustom(selectedNodeId, (custom) => (custom.content = contentEdited))
-    console.log(query.serialize());
   }
 
   return (
     <>
       <Box {...hoverProps} _hover={hoverStyle} w="100%" py={0} ref={ref => connect(drag(ref))}>
-        <EditComponent handleDelete={() => {
+        <EditFuture1 handleDelete={() => {
           actions.delete(selectedNodeId)
         }} isHovered={isHovered} content={content} setContent={(contentEdited) => setContent({ ...contentEdited })} 
         setContentCustom={(contentEdited) => setCustomContent(contentEdited)}

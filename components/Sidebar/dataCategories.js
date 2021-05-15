@@ -49,7 +49,7 @@ export const categories = [
             {
                 name: 'Lastest Card',
                 components: [
-                    { name: 'LastestArticles', imgSrc: 'navigation3.png', jsx: <LastestCard /> },
+                    { name: 'LastestArticles', imgSrc: 'lastestArticle.png', jsx: <LastestCard /> },
                 ]
             },]
     },
