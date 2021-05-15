@@ -42,6 +42,7 @@ import { Footer3 } from "./User/Footer/footer3";
 import { Footer4 } from "./User/Footer/footer4";
 import { Footer5 } from "./User/Footer/footer5";
 
+import LastestCard from "./User/DynamicComponent/LastestArticles";
 import { ContainerComponent } from "./User/Container/container";
 
 function Layout({ children }) {
@@ -75,7 +76,8 @@ function Layout({ children }) {
                         CallToAction,CallToAction2,CallToAction3,CallToAction4,
                         Navigation, Navigation2,
                         Pricing, Pricing2,
-                        Header, Header2, Header3, Header4, Header5, Header6
+                        Header, Header2, Header3, Header4, Header5, Header6,
+                        LastestCard
                     }}
                     enabled={enabled}
                     // onNodesChange={query => {

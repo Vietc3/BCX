@@ -34,6 +34,8 @@ import { Footer5 } from "../User/Footer/footer5";
 import { Pricing } from "../User/Pricing/pricing";
 import { Pricing2 } from "../User/Pricing/pricing2";
 
+import LastestCard from "../User/DynamicComponent/LastestArticles";
+
 export const categories = [
     {
         name: 'LAYOUT',
@@ -42,7 +44,17 @@ export const categories = [
         ]
     },
     {
-        name: 'BASE',
+        name: 'DYNAMIC COMPONENTS',
+        components: [
+            {
+                name: 'Lastest Card',
+                components: [
+                    { name: 'LastestArticles', imgSrc: 'navigation3.png', jsx: <LastestCard /> },
+                ]
+            },]
+    },
+    {
+        name: 'STATIC COMPONENT',
         components: [
             {
                 name: 'Navigations',
