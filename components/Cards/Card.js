@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 import styles from '../../constants/styles';
-import useColorTheme from '../hooks/useColorTheme';
+import {useColorTheme} from '../Hooks/useColor';
 
 
 const Card = ({ children, ...props }) => {

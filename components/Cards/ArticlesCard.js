@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, BoxProps, Text, useBreakpointValue, Icon, chakra, Flex } from '@chakra-ui/react';
-import useColorTheme from '../hooks/useColorTheme';
+import {useColorTheme} from '../Hooks/useColor';
 import styles from '../../constants/styles';
 import Image from '../Image/Image';
 import { URL_BASE } from '../../constants/index';

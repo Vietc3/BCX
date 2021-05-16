@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
-import useColorTheme from '../../Hooks/useColorTheme';
+import {useColorTheme} from '../../Hooks/useColor';
 import ArticlesCard from '../../Cards/ArticlesCard';
 import { useNode, useEditor } from "@craftjs/core";
 import { hoverStyle } from "../Style/styleDefault";
