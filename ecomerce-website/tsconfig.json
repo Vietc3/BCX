@@ -60,7 +60,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/builderComponents/headers/header1.js"
-  ],
+, "src/components/builderComponents/navigation/accountNavigation.js"  ],
   "exclude": [
     "node_modules",
     "cypress/*"

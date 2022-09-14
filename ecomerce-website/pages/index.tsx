@@ -7,6 +7,8 @@ import { useGetContent } from "../src/services/index"
 import { Navigation } from "@components/builderComponents/navigation/navigation";
 import { Navigation2 } from "@components/builderComponents/navigation/navigation2";
 import { Navigation6 } from "@components/builderComponents/navigation/navigation6";
+import { NavAccount } from "@components/builderComponents/navigation/accountNavigation";
+
 
 import { Header } from "@components/builderComponents/headers/header1";
 import { Header2 } from "@components/builderComponents/headers/header2";
@@ -14,6 +16,7 @@ import { Header3 } from "@components/builderComponents/headers/header3";
 import useSWR from 'swr';
 
 import { Header4 } from "@components/builderComponents/headers/header4";
+import { AdvertisementText } from "@components/builderComponents/advertisementText";
 export const fetcher = (...args: any) => fetch(...args).then(res => res.json())
 
 const Home: React.FC = () => {
@@ -55,10 +58,13 @@ const Home: React.FC = () => {
     console.log("content", content)
     return (
         <Flex direction="column" minH="100vh">
-            {
+            {/* {
                 content[content?.ROOT?.linkedNodes?.drop]?.nodes?.map(chil => handleElements(content[`${chil}`]))
 
-            }
+            } */}
+            <AdvertisementText/>
+            <NavAccount/>
+            <Navigation6/>
         </Flex>
     );
 };
