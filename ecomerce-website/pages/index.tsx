@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Spacer, Flex } from "@chakra-ui/react";
+import { Spacer, Flex, Box } from "@chakra-ui/react";
 
 
 
@@ -7,7 +7,8 @@ import { useGetContent } from "../src/services/index"
 import { Navigation } from "@components/builderComponents/navigation/navigation";
 import { Navigation2 } from "@components/builderComponents/navigation/navigation2";
 import { Navigation6 } from "@components/builderComponents/navigation/navigation6";
-import { NavAccount } from "@components/builderComponents/navigation/accountNavigation";
+import { Navigation7 } from "@components/builderComponents/navigation/navigation7";
+import { Navigation8 } from "@components/builderComponents/navigation/navigation8";
 
 
 import { Header } from "@components/builderComponents/headers/header1";
@@ -17,6 +18,7 @@ import useSWR from 'swr';
 
 import { Header4 } from "@components/builderComponents/headers/header4";
 import { AdvertisementText } from "@components/builderComponents/advertisementText";
+import { Caroulsel1 } from "@components/builderComponents/carousel";
 export const fetcher = (...args: any) => fetch(...args).then(res => res.json())
 
 const Home: React.FC = () => {
@@ -42,7 +44,18 @@ const Home: React.FC = () => {
             return <Navigation2 />
         } else if (nameELements?.displayName === "Navigation6") {
             return <Navigation6 />
-        } else if (nameELements?.displayName === "Header") {
+        }
+        else if (nameELements?.displayName === "Carousel1") {
+            return <Caroulsel1 />
+        }
+        else if (nameELements?.displayName === "Navigation7") {
+            return <Navigation7 />
+        } else if (nameELements?.displayName === "Navigation8") {
+            return <Navigation8 />
+        } else if (nameELements?.displayName === "Navigation9") {
+            return <AdvertisementText />
+        }
+        else if (nameELements?.displayName === "Header") {
             return <Header />
         } else if (nameELements?.displayName === "Header2") {
             return <Header2 />
@@ -55,16 +68,18 @@ const Home: React.FC = () => {
         }
 
     }
-    console.log("content", content)
+
     return (
         <Flex direction="column" minH="100vh">
-            {/* {
+
+            {
                 content[content?.ROOT?.linkedNodes?.drop]?.nodes?.map(chil => handleElements(content[`${chil}`]))
 
-            } */}
-            <AdvertisementText/>
-            <NavAccount/>
-            <Navigation6/>
+            }
+
+
+
+
         </Flex>
     );
 };

@@ -78,7 +78,6 @@ export const Navigation6 = () => {
   const Features = (
     <React.Fragment>
       <SimpleGrid
-     
         columns={{
           base: 1,
           md: 3,
@@ -302,23 +301,6 @@ export const Navigation6 = () => {
     </VStack>
   );
 
-  const ShopAllCategories = (
-    <Box
-    w="100%"
-    display={"flex"}
-    flexDir="row"
-    justifyContent={"space-between"}
-    pos="relative"
- height="100px"
- px={"10%"}
- 
-   >
-    <Box role="group" bgColor="red" flex={2} borderRight='1px'  />
-    <Box role="group"bgColor="yellow"   flex={4} borderRight='1px'  />
-  <Box role="group" bgColor="red"  flex={2} borderRight='1px'  />
-   </Box>
-  );
-
   return (
     <Box>
       <chakra.header
@@ -330,20 +312,17 @@ export const Navigation6 = () => {
           sm: 4,
         }}
         py={4}
-        borderBottom='1px'
       >
-      
-        
+        <Flex alignItems="center" justifyContent="space-between" mx="auto">
+          <Link display="flex" alignItems="center" href="/"></Link>
           <Box
-           w="100%"
-           display={"flex"}
-           flexDir="row"
-           justifyContent={"space-between"}
-           px={"10%"}
-        
+            display={{
+              base: "none",
+              md: "inline-flex",
+            }}
           >
-           
-              <Box role="group" flex={2} borderRight='1px'  >
+            <HStack spacing={1}>
+              <Box role="group" w="100%">
                 <Button
                   bg={bg}
                   color="gray.500"
@@ -355,115 +334,9 @@ export const Navigation6 = () => {
                   _focus={{
                     boxShadow: "none",
                   }}
-                  textTransform='uppercase'
                   rightIcon={<IoIosArrowDown />}
                 >
-                  Shop All Categories
-                </Button>
-                <Box
-                  pos="absolute"
-                  left={0}
-                  w="100%"
-                  display="none"
-                  _groupHover={{
-                    display: "block",
-                  }}
-                  px={4}
-              
-                >
-                  {ShopAllCategories}
-                </Box>
-              </Box>
-              <Box role="group"  display={"flex"}
-           flexDir="row" flex={4} borderRight='1px'  >
-              <Button
-                bg={bg}
-                
-                flex={1} 
-               
-                color="gray.500"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                 
-                textTransform='uppercase'
-                _hover={{
-                  color: cl,
-                }}
-                _focus={{
-                  boxShadow: "none",
-                }}
-              >
-                Brands
-              </Button>
-              <Button
-                bg={bg}
-                flex={1} 
-                textTransform='uppercase'
-                color="gray.500"
-               
-                alignItems="center"
-                fontSize="md"
-                _hover={{
-                  color: cl,
-                }}
-                _focus={{
-                  boxShadow: "none",
-                }}
-              >
-                Promotions
-              </Button>
-              <Button
-                bg={bg}
-                flex={1} 
-                textTransform='uppercase'
-                color="gray.500"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{
-                  color: cl,
-                }}
-                _focus={{
-                  boxShadow: "none",
-                }}
-              >
-                Changi Experience
-              </Button>
-              <Button
-                bg={bg}
-                flex={1} 
-                textTransform='uppercase'
-                color="gray.500"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{
-                  color: cl,
-                }}
-                _focus={{
-                  boxShadow: "none",
-                }}
-              >
-                Ishopcurates
-              </Button>
-              </Box>
-              <Box role="group"  flex={2}  borderLeft='1px'>
-                <Button
-                  bg={bg}
-                  textTransform='uppercase'
-                  color="gray.500"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{
-                    color: cl,
-                  }}
-                  _focus={{
-                    boxShadow: "none",
-                  }}
-                  rightIcon={<IoIosArrowDown />}
-                >
-                  Shop For Non Traveller
+                  Features
                 </Button>
                 <Box
                   pos="absolute"
@@ -477,10 +350,78 @@ export const Navigation6 = () => {
                   {Features}
                 </Box>
               </Box>
-           
+              <Button
+                bg={bg}
+                color="gray.500"
+                display="inline-flex"
+                alignItems="center"
+                fontSize="md"
+                _hover={{
+                  color: cl,
+                }}
+                _focus={{
+                  boxShadow: "none",
+                }}
+              >
+                Blog
+              </Button>
+              <Button
+                bg={bg}
+                color="gray.500"
+                display="inline-flex"
+                alignItems="center"
+                fontSize="md"
+                _hover={{
+                  color: cl,
+                }}
+                _focus={{
+                  boxShadow: "none",
+                }}
+              >
+                Pricing
+              </Button>
+            </HStack>
           </Box>
-        
-        
+          <Spacer />
+          <Box display="flex" alignItems="center">
+            <HStack spacing={1}>
+              <Button colorScheme="brand" variant="ghost" size="sm">
+                Sign in
+              </Button>
+              <Button colorScheme="brand" variant="solid" size="sm">
+                Sign up
+              </Button>
+            </HStack>
+            <IconButton
+              size="md"
+              fontSize="lg"
+              aria-label={`Switch to ${text} mode`}
+              variant="ghost"
+              color="current"
+              ml={{
+                base: "0",
+                md: "3",
+              }}
+              onClick={toggleMode}
+              icon={<SwitchIcon />}
+            />
+            <IconButton
+              display={{
+                base: "flex",
+                md: "none",
+              }}
+              aria-label="Open menu"
+              fontSize="20px"
+              color="gray.800"
+              _dark={{
+                color: "inherit",
+              }}
+              variant="ghost"
+              icon={<AiOutlineMenu />}
+              onClick={mobileNav.onOpen}
+            />
+          </Box>
+        </Flex>
 
         {MobileNavContent}
       </chakra.header>

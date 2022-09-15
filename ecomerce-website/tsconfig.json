@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,39 +15,17 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@definitions/*": [
-        "src/definitions/*"
-      ],
-      "@definitions": [
-        "src/definitions"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@components": [
-        "src/components"
-      ],
-      "@public/*": [
-        "public/*"
-      ],
-      "@public": [
-        "public"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@styles": [
-        "src/styles"
-      ],
-      "@recoil/*": [
-        "src/recoil/*"
-      ],
-      "@recoil": [
-        "src/recoil"
-      ],
-      "@i18n": [
-        "./i18n"
-      ]
+      "@definitions/*": ["src/definitions/*"],
+      "@definitions": ["src/definitions"],
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components"],
+      "@public/*": ["public/*"],
+      "@public": ["public"],
+      "@styles/*": ["src/styles/*"],
+      "@styles": ["src/styles"],
+      "@recoil/*": ["src/recoil/*"],
+      "@recoil": ["src/recoil"],
+      "@i18n": ["./i18n"]
     },
     "incremental": true
   },
@@ -59,10 +33,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/builderComponents/headers/header1.js"
-, "src/components/builderComponents/navigation/accountNavigation.js"  ],
-  "exclude": [
-    "node_modules",
-    "cypress/*"
-  ]
+    "src/components/builderComponents/headers/header1.js",
+    "src/components/builderComponents/navigation/navigation7.jsc/hooks/useHover.js"
+  ],
+  "exclude": ["node_modules", "cypress/*"]
 }

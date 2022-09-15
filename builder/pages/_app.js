@@ -1,10 +1,9 @@
-
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import Layout from '../components/Layout';
-import {
-  RecoilRoot,
-} from 'recoil';
+import Layout from "../components/Layout";
+import { RecoilRoot } from "recoil";
+import "slick-carousel/slick/slick.css";
 
+import "slick-carousel/slick/slick-theme.css";
 const colors = {
   brand: {
     50: "#ecefff",
@@ -30,10 +29,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <RecoilRoot>
       <ChakraProvider theme={theme}>
-        <Layout><Component {...pageProps} /></Layout>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ChakraProvider>
     </RecoilRoot>
-
   );
 }
 export default MyApp;

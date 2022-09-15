@@ -1,6 +1,9 @@
 import { Navigation } from "../User/Navigation/navigation";
 import { Navigation2 } from "../User/Navigation/navigation2";
 import { Navigation6 } from "../User/Navigation/navigation6";
+import { Navigation8 } from "../User/Navigation/navigation8";
+import { Navigation7 } from "../User/Navigation/navigation7";
+import { Navigation9 } from "../User/Navigation/navigation9";
 
 import { Header } from "../User/Header/header";
 import { Header2 } from "../User/Header/header2";
@@ -8,6 +11,8 @@ import { Header3 } from "../User/Header/header3";
 import { Header4 } from "../User/Header/header4";
 import { Header5 } from "../User/Header/header5";
 import { Header6 } from "../User/Header/header6";
+
+import { Carousel1 } from "../User/Carousel/Carousel1";
 
 import { FeatureComponent } from "../User/Feature/feature";
 import { FeatureComponent2 } from "../User/Feature/feature2";
@@ -68,6 +73,22 @@ export const categories = [
         name: "Navigations",
         components: [
           {
+            name: "navigation8",
+            imgSrc: "navigation8.png",
+            jsx: <Navigation8 />,
+          },
+          {
+            name: "navigation9",
+            imgSrc: "navigation9.png",
+            jsx: <Navigation9 />,
+          },
+          {
+            name: "navigation7",
+            imgSrc: "navigation7.png",
+            jsx: <Navigation7 />,
+          },
+
+          {
             name: "navigation1",
             imgSrc: "navigation3.png",
             jsx: <Navigation />,
@@ -93,6 +114,16 @@ export const categories = [
           { name: "header4", imgSrc: "header4.PNG", jsx: <Header4 /> },
           { name: "header5", imgSrc: "header5.PNG", jsx: <Header5 /> },
           { name: "header6", imgSrc: "header6.PNG", jsx: <Header6 /> },
+        ],
+      },
+      {
+        name: "Carousel",
+        components: [
+          {
+            name: "Carousel1",
+            imgSrc: "Carousel1.png",
+            jsx: <Carousel1 />,
+          },
         ],
       },
       {

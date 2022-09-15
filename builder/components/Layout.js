@@ -35,6 +35,11 @@ import { Pricing2 } from "./User/Pricing/pricing2";
 import { Navigation } from "./User/Navigation/navigation";
 import { Navigation2 } from "./User/Navigation/navigation2";
 import { Navigation6 } from "./User/Navigation/navigation6";
+import { Navigation7 } from "./User/Navigation/navigation7";
+import { Navigation8 } from "./User/Navigation/navigation8";
+import { Navigation9 } from "./User/Navigation/navigation9";
+
+import { Carousel1 } from "./User/Carousel/Carousel1";
 
 import { Footer } from "./User/Footer/footer";
 import { Footer2 } from "./User/Footer/footer2";
@@ -76,6 +81,10 @@ function Layout({ children }) {
         Navigation,
         Navigation2,
         Navigation6,
+        Navigation7,
+        Navigation8,
+        Navigation9,
+        Carousel1,
         Pricing,
         Pricing2,
         Header,
