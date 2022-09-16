@@ -35,9 +35,10 @@ const Home: React.FC = () => {
         }
 
     }, [data])
+    console.log("content", content)
 
     const handleElements = (nameELements: any) => {
-        console.log("nameELements", nameELements)
+
         if (nameELements?.displayName === "Navigation") {
             return <Navigation />
         } else if (nameELements?.displayName === "Navigation2") {
